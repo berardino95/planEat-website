@@ -13,7 +13,7 @@ Your personal meal planning assistant for iOS and Apple Watch.
 
 ## 📧 Contact
 
-berardinochiarello@gmail.com
+berardino.chiarello@gmail.com
 
 ---
 
