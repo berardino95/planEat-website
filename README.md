@@ -7,7 +7,7 @@ Personal website and app resources for Berardino Chiarello.
 ### PlanEat
 Your personal meal planning assistant for iOS and Apple Watch.
 
-- **Website:** [https://berardinochiarello.github.io/planeat/](https://berardino95.github.io/planEat-website/planeat/index.html)
+- **Website:** [HomePage](https://berardino95.github.io/planEat-website/planeat/index.html)
 - **Support:** [English](https://berardino95.github.io/planEat-website/planeat/support.html) | [Italiano](https://berardino95.github.io/planEat-website/planeat/support-it.html)
 - **Privacy Policy:** [English](https://berardino95.github.io/planEat-website/planeat/privacy-policy.html) | [Italiano](https://berardino95.github.io/planEat-website/planeat/privacy-policy-it.html)
 
