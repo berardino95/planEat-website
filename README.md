@@ -17,4 +17,4 @@ berardino.chiarello@gmail.com
 
 ---
 
-© 2024 Berardino Chiarello. All rights reserved.
+© 2025 Berardino Chiarello. All rights reserved.

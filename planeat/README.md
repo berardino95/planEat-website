@@ -24,7 +24,18 @@ Use these URLs when submitting your app to App Store Connect:
 - `support-it.html` - Italian support page (Supporto)
 - `privacy-policy.html` - English privacy policy
 - `privacy-policy-it.html` - Italian privacy policy (Informativa sulla Privacy)
+- `config.js` - Centralized configuration file (email and app info)
+- `app-icon.png` - App icon image
 - `README.md` - This documentation file
+
+## 🔧 Configuration
+
+All email addresses and key information are centralized in `config.js`. To update the contact email or other info, simply edit this file and all pages will automatically update.
+
+**Current Configuration:**
+- Email: berardino.chiarello@gmail.com
+- Developer: Berardino Chiarello
+- Copyright Year: 2025
 
 ## 📱 App Information
 
@@ -34,7 +45,8 @@ Use these URLs when submitting your app to App Store Connect:
 - **Category:** Food & Drink
 - **Min Requirements:** iOS 18.0+, watchOS 11.0+
 - **Developer:** Berardino Chiarello
-- **Copyright:** © 2024 Berardino Chiarello. All rights reserved.
+- **Contact:** berardino.chiarello@gmail.com
+- **Copyright:** © 2025 Berardino Chiarello. All rights reserved.
 
 ## 🚀 Publishing Checklist
 
@@ -79,4 +91,4 @@ For support inquiries, users can contact:
 
 ## 📅 Last Updated
 
-October 9, 2024
+October 9, 2025

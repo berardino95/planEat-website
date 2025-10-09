@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlanEat - Your Personal Meal Planning Assistant</title>
+    <link rel="icon" type="image/png" href="app-icon.png">
+    <link rel="apple-touch-icon" href="app-icon.png">
+    <script src="config.js"></script>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -29,14 +32,14 @@
             width: 120px;
             height: 120px;
             margin: 0 auto 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-            color: white;
+            overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .app-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         h1 {
             color: #2c3e50;
@@ -127,32 +130,6 @@
             font-size: 12px;
             color: #7f8c8d;
         }
-        .app-info {
-            background-color: #e8f4f8;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 30px 0;
-        }
-        .app-info h2 {
-            color: #2c3e50;
-            margin-top: 0;
-        }
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-        .info-item {
-            background-color: white;
-            padding: 15px;
-            border-radius: 5px;
-        }
-        .info-item strong {
-            color: #3498db;
-            display: block;
-            margin-bottom: 5px;
-        }
         .copyright {
             text-align: center;
             margin-top: 50px;
@@ -181,7 +158,9 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="app-icon">🍽️</div>
+            <div class="app-icon">
+                <img src="app-icon.png" alt="PlanEat App Icon">
+            </div>
             <h1>PlanEat</h1>
             <p class="tagline">Your Personal Meal Planning Assistant</p>
             <span class="badge">iOS & watchOS</span>
@@ -224,36 +203,6 @@
             </div>
         </div>
 
-        <div class="app-info">
-            <h2>App Information</h2>
-            <div class="info-grid">
-                <div class="info-item">
-                    <strong>Version</strong>
-                    0.0.5 (Build 2)
-                </div>
-                <div class="info-item">
-                    <strong>Category</strong>
-                    Food & Drink
-                </div>
-                <div class="info-item">
-                    <strong>iOS Requirement</strong>
-                    iOS 18.0 or later
-                </div>
-                <div class="info-item">
-                    <strong>watchOS Requirement</strong>
-                    watchOS 11.0 or later
-                </div>
-                <div class="info-item">
-                    <strong>Languages</strong>
-                    English, Italian
-                </div>
-                <div class="info-item">
-                    <strong>Developer</strong>
-                    Berardino Chiarello
-                </div>
-            </div>
-        </div>
-
         <div class="links-section">
             <h2>Resources & Information</h2>
             <div class="links-grid">
@@ -282,17 +231,14 @@
 
         <div class="copyright">
             <h2>Copyright & Legal</h2>
-            <p><strong>&copy; 2024 Berardino Chiarello. All rights reserved.</strong></p>
+            <p><strong>&copy; 2025 Berardino Chiarello. All rights reserved.</strong></p>
             <p>PlanEat is a trademark of Berardino Chiarello.</p>
-            <p style="margin-top: 20px;">
-                <strong>Bundle Identifier:</strong> com.BerardinoChiarello.Lista
-            </p>
             <p style="margin-top: 15px; font-size: 14px;">
                 All product names, logos, and brands are property of their respective owners.<br>
                 Apple, iPhone, Apple Watch, iOS, watchOS, and iCloud are trademarks of Apple Inc.
             </p>
             <p style="margin-top: 20px;">
-                <strong>Contact:</strong> <a href="mailto:berardinochiarello@gmail.com" style="color: #3498db;">berardinochiarello@gmail.com</a>
+                <strong>Contact:</strong> <a href="mailto:" style="color: #3498db;"></a>
             </p>
         </div>
     </div>
