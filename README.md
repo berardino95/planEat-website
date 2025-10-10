@@ -13,7 +13,7 @@ Your personal meal planning assistant for iOS and Apple Watch.
 
 ## 📧 Contact
 
-berardino.chiarello@gmail.com
+planeatmobileapp@gmail.com
 
 ---
 
