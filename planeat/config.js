@@ -1,7 +1,7 @@
 // Configurazione centralizzata per il sito PlanEat
 const PLANEAT_CONFIG = {
     contact: {
-        email: 'berardino.chiarello@gmail.com'
+        email: 'planeatmobileapp@gmail.com'
     },
     app: {
         name: 'PlanEat',
