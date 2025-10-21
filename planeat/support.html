@@ -9,84 +9,117 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            color: #333;
-            max-width: 800px;
+            color: #1a1a1a;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f9f9f9;
+            background: linear-gradient(135deg, #00D4C4 0%, #00B8AA 100%);
+            min-height: 100vh;
         }
         h1 {
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
+            color: #1a1a1a;
+            border-bottom: 3px solid #00D4C4;
+            padding-bottom: 15px;
+            font-weight: 700;
+            font-size: 32px;
         }
         h2 {
-            color: #34495e;
-            margin-top: 30px;
+            color: #1a1a1a;
+            margin-top: 35px;
+            font-weight: 700;
+            font-size: 24px;
         }
         .container {
             background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
         }
         .intro {
-            background-color: #e8f4f8;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            border-left: 4px solid #3498db;
+            background: linear-gradient(135deg, #e8fffe 0%, #d4f9f7 100%);
+            padding: 25px;
+            border-radius: 14px;
+            margin-bottom: 35px;
+            border-left: 5px solid #00D4C4;
         }
         .faq-item {
             margin-bottom: 25px;
-            padding: 15px;
-            background-color: #f8f9fa;
-            border-radius: 5px;
+            padding: 20px;
+            background-color: #f8fffe;
+            border-radius: 12px;
+            border: 2px solid #e8f9f7;
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+            border-color: #00D4C4;
+            box-shadow: 0 5px 15px rgba(0, 212, 196, 0.1);
         }
         .faq-item h3 {
-            color: #2980b9;
+            color: #00B8AA;
             margin-top: 0;
+            font-weight: 600;
+            font-size: 18px;
         }
         .contact {
-            background-color: #ecf0f1;
-            padding: 20px;
-            border-radius: 5px;
-            margin-top: 30px;
+            background: linear-gradient(135deg, #f0fffe 0%, #e0fbf9 100%);
+            padding: 25px;
+            border-radius: 14px;
+            margin-top: 35px;
+            border: 2px solid #d0f5f2;
         }
         .contact-method {
-            margin: 15px 0;
+            margin: 18px 0;
         }
         .feature-list {
-            background-color: #f0f8ff;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
+            background: linear-gradient(135deg, #e8fffe 0%, #d4f9f7 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 18px 0;
+            border: 2px solid #c0f0ed;
         }
         ul {
-            padding-left: 20px;
+            padding-left: 25px;
         }
         li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         a {
-            color: #3498db;
+            color: #00D4C4;
             text-decoration: none;
+            font-weight: 600;
         }
         a:hover {
+            color: #00B8AA;
             text-decoration: underline;
         }
         .button {
             display: inline-block;
-            padding: 12px 24px;
-            background-color: #3498db;
+            padding: 14px 28px;
+            background-color: #00D4C4;
             color: white;
-            border-radius: 5px;
+            border-radius: 10px;
             text-decoration: none;
-            margin-top: 10px;
+            margin-top: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 212, 196, 0.3);
         }
         .button:hover {
-            background-color: #2980b9;
+            background-color: #00B8AA;
             text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 212, 196, 0.4);
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+            h1 {
+                font-size: 26px;
+            }
+            h2 {
+                font-size: 20px;
+            }
         }
     </style>
 </head>
@@ -103,6 +136,7 @@
         <p>PlanEat helps you organize your meals and simplify grocery shopping with these features:</p>
         <div class="feature-list">
             <ul>
+                <li><strong>AI Recipe Assistant:</strong> Generate custom recipes or convert any recipe text using Apple Intelligence (iOS 26.0+)</li>
                 <li><strong>Recipe Management:</strong> Create, edit, and organize your favorite recipes</li>
                 <li><strong>Meal Planning:</strong> Plan your meals on a visual calendar</li>
                 <li><strong>Smart Shopping Lists:</strong> Auto-generate shopping lists from your meal plans</li>
@@ -116,8 +150,18 @@
         <h2>Frequently Asked Questions</h2>
 
         <div class="faq-item">
-            <h3>How do I create a recipe?</h3>
-            <p>Navigate to the Recipes tab and tap the "+" button. Fill in the recipe details including ingredients, preparation steps, cooking time, and servings. You can also add tags to organize your recipes.</p>
+            <h3>How do I use the AI Recipe Assistant?</h3>
+            <p>The AI Recipe Assistant is available on iOS 26.0+ with Apple Intelligence enabled. In the Recipes tab, tap the floating "+" button to see two options:</p>
+            <ul>
+                <li><strong>Generate Recipe with AI:</strong> Describe what you want to cook (e.g., "a healthy pasta dish with vegetables"), and Apple Intelligence will create a complete recipe with ingredients, quantities adjusted for your measurement system, and step-by-step instructions.</li>
+                <li><strong>Convert Recipe:</strong> Paste any recipe text from a website, cookbook, or message, and Apple Intelligence will automatically structure it with categorized ingredients and organized steps.</li>
+            </ul>
+            <p>Both modes adapt to your language and local measurement system. You can review and edit the generated recipe before saving it.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I create a recipe manually?</h3>
+            <p>Navigate to the Recipes tab and tap the "+" button (or "Add recipe" if AI is available). Fill in the recipe details including ingredients, preparation steps, cooking time, and servings. You can also add tags to organize your recipes.</p>
         </div>
 
         <div class="faq-item">

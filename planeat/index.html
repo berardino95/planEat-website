@@ -8,150 +8,389 @@
     <link rel="apple-touch-icon" href="app-icon.png">
     <script src="config.js"></script>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            color: #333;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #00D4C4 0%, #00B8AA 100%);
             min-height: 100vh;
+            padding: 20px;
         }
+
         .container {
+            max-width: 1000px;
+            margin: 0 auto;
             background-color: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
         }
+
         .header {
             text-align: center;
-            margin-bottom: 40px;
+            padding: 60px 40px 40px;
+            background: linear-gradient(180deg, #ffffff 0%, #f8fffe 100%);
         }
+
         .app-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 20px;
-            border-radius: 25px;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 25px;
+            border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 25px rgba(0, 212, 196, 0.3);
         }
+
         .app-icon img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
+
         h1 {
-            color: #2c3e50;
-            margin: 0;
-            font-size: 36px;
+            color: #1a1a1a;
+            margin: 0 0 10px 0;
+            font-size: 42px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
+
         .tagline {
-            color: #7f8c8d;
-            font-size: 18px;
-            margin-top: 10px;
-        }
-        .description {
-            text-align: center;
-            font-size: 16px;
-            color: #555;
-            margin: 30px 0;
-            padding: 0 20px;
-        }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
-        }
-        .feature {
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            text-align: center;
-        }
-        .feature-icon {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
-        .feature h3 {
-            color: #2c3e50;
-            margin: 10px 0;
-            font-size: 18px;
-        }
-        .feature p {
             color: #666;
-            font-size: 14px;
-            margin: 0;
+            font-size: 20px;
+            margin-top: 10px;
+            font-weight: 400;
         }
-        .links-section {
-            margin: 40px 0;
-            padding: 30px;
-            background-color: #ecf0f1;
-            border-radius: 10px;
-        }
-        .links-section h2 {
-            color: #2c3e50;
-            margin-top: 0;
-            text-align: center;
-        }
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .link-card {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            text-decoration: none;
-            color: #2c3e50;
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: 2px solid #e0e0e0;
-        }
-        .link-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-color: #3498db;
-        }
-        .link-icon {
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
-        .link-card h3 {
-            margin: 10px 0 5px 0;
-            font-size: 16px;
-            color: #3498db;
-        }
-        .link-card p {
-            margin: 0;
-            font-size: 12px;
-            color: #7f8c8d;
-        }
-        .copyright {
-            text-align: center;
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 2px solid #e0e0e0;
-            color: #7f8c8d;
-        }
-        .copyright h2 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-        }
-        .copyright p {
-            margin: 5px 0;
-        }
+
         .badge {
             display: inline-block;
-            padding: 5px 10px;
-            background-color: #3498db;
+            padding: 8px 16px;
+            background-color: #00D4C4;
             color: white;
-            border-radius: 5px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        .app-store-button {
+            display: inline-block;
+            margin: 25px 0 0 0;
+            padding: 16px 40px;
+            background-color: #00D4C4;
+            color: white;
+            text-decoration: none;
+            border-radius: 14px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 212, 196, 0.3);
+        }
+
+        .app-store-button:hover {
+            background-color: #00B8AA;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 212, 196, 0.4);
+        }
+
+        .description {
+            text-align: center;
+            font-size: 17px;
+            color: #444;
+            margin: 0;
+            padding: 40px 50px;
+            background-color: #fafafa;
+            line-height: 1.8;
+        }
+
+        .ai-spotlight {
+            padding: 50px 40px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0fffe 100%);
+            border-top: 3px solid #00D4C4;
+            border-bottom: 3px solid #00D4C4;
+        }
+
+        .ai-spotlight-header {
+            text-align: center;
+            margin-bottom: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .ai-icon {
+            font-size: 48px;
+        }
+
+        .ai-spotlight h2 {
+            margin: 0;
+            font-size: 32px;
+            color: #1a1a1a;
+        }
+
+        .ai-label {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #00D4C4 0%, #00B8AA 100%);
+            color: white;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .ai-spotlight-intro {
+            text-align: center;
+            font-size: 17px;
+            color: #444;
+            line-height: 1.7;
+            margin-bottom: 35px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .ai-modes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .ai-mode {
+            padding: 30px;
+            background: white;
+            border-radius: 16px;
+            border: 2px solid #e0f5f3;
+            transition: all 0.3s ease;
+        }
+
+        .ai-mode:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 212, 196, 0.15);
+            border-color: #00D4C4;
+        }
+
+        .ai-mode-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .ai-mode h3 {
+            color: #00B8AA;
+            margin: 0 0 12px 0;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .ai-mode p {
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .ai-spotlight-note {
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+            font-style: italic;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 50px 40px;
+        }
+
+        .feature {
+            padding: 30px 25px;
+            background: linear-gradient(135deg, #f8fffe 0%, #ffffff 100%);
+            border-radius: 16px;
+            text-align: center;
+            border: 2px solid #e8f9f7;
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 196, 0.15);
+            border-color: #00D4C4;
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            color: #1a1a1a;
+            margin: 15px 0 10px 0;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .feature p {
+            color: #666;
+            font-size: 15px;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .ai-feature {
+            background: linear-gradient(135deg, #f0f0ff 0%, #e8f9f7 100%);
+            border-color: #00D4C4;
+            border-width: 2px;
+            grid-column: span 2;
+        }
+
+        .ai-badge {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 6px 12px;
+            background: linear-gradient(135deg, #00D4C4 0%, #00B8AA 100%);
+            color: white;
+            border-radius: 12px;
             font-size: 12px;
-            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .ai-feature {
+                grid-column: span 1;
+            }
+        }
+
+        .links-section {
+            margin: 0;
+            padding: 50px 40px;
+            background: linear-gradient(180deg, #fafafa 0%, #f5f5f5 100%);
+        }
+
+        .links-section h2 {
+            color: #1a1a1a;
+            margin: 0 0 30px 0;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .link-card {
+            background-color: white;
+            padding: 25px 20px;
+            border-radius: 14px;
+            text-align: center;
+            text-decoration: none;
+            color: #1a1a1a;
+            transition: all 0.3s ease;
+            border: 2px solid #e8e8e8;
+        }
+
+        .link-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 212, 196, 0.15);
+            border-color: #00D4C4;
+        }
+
+        .link-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .link-card h3 {
+            margin: 12px 0 8px 0;
+            font-size: 17px;
+            color: #00D4C4;
+            font-weight: 600;
+        }
+
+        .link-card p {
+            margin: 0;
+            font-size: 13px;
+            color: #888;
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 50px 40px;
+            background-color: white;
+            color: #888;
+        }
+
+        .copyright h2 {
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .copyright p {
+            margin: 8px 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .copyright a {
+            color: #00D4C4;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .copyright a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            .description {
+                padding: 30px 25px;
+                font-size: 16px;
+            }
+
+            .ai-spotlight {
+                padding: 30px 20px;
+            }
+
+            .ai-spotlight h2 {
+                font-size: 26px;
+            }
+
+            .ai-spotlight-intro {
+                font-size: 16px;
+                padding: 0 10px;
+            }
+
+            .ai-modes {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                padding: 30px 20px;
+                gap: 20px;
+            }
+
+            .links-section {
+                padding: 30px 20px;
+            }
+
+            .copyright {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
@@ -164,13 +403,47 @@
             <h1>PlanEat</h1>
             <p class="tagline">Your Personal Meal Planning Assistant</p>
             <span class="badge">iOS & watchOS</span>
+            <br>
+            <a href="https://apps.apple.com/it/app/planeat/id6741439240" class="app-store-button" target="_blank" rel="noopener noreferrer">
+                Download on the App Store
+            </a>
         </div>
 
         <div class="description">
             <p>PlanEat is a native iOS and watchOS application designed to simplify meal planning and grocery shopping. Organize your recipes, plan your meals on a visual calendar, and generate smart shopping lists automatically. Available for iPhone and Apple Watch.</p>
         </div>
 
+        <div class="ai-spotlight">
+            <div class="ai-spotlight-header">
+                <span class="ai-icon">✨</span>
+                <h2>AI Recipe Assistant</h2>
+                <span class="ai-label">Powered by Apple Intelligence</span>
+            </div>
+            <p class="ai-spotlight-intro">PlanEat harnesses the power of Apple Intelligence to revolutionize how you manage recipes. Two intelligent modes make recipe creation effortless:</p>
+
+            <div class="ai-modes">
+                <div class="ai-mode">
+                    <div class="ai-mode-icon">🪄</div>
+                    <h3>Generate Mode</h3>
+                    <p>Describe what you want to cook, and Apple Intelligence creates a complete, personalized recipe with ingredients, quantities, and step-by-step instructions tailored to your preferences and local measurement system.</p>
+                </div>
+                <div class="ai-mode">
+                    <div class="ai-mode-icon">📄</div>
+                    <h3>Convert Mode</h3>
+                    <p>Paste any recipe from a website, cookbook, or message, and Apple Intelligence automatically converts it into a structured format with categorized ingredients, proper quantities, and organized cooking steps.</p>
+                </div>
+            </div>
+
+            <p class="ai-spotlight-note">Available on iOS 26.0+ with Apple Intelligence enabled</p>
+        </div>
+
         <div class="features">
+            <div class="feature ai-feature">
+                <div class="feature-icon">✨</div>
+                <h3>AI Recipe Assistant</h3>
+                <p>Generate custom recipes or convert any recipe text to structured format using Apple Intelligence</p>
+                <span class="ai-badge">Powered by Apple Intelligence</span>
+            </div>
             <div class="feature">
                 <div class="feature-icon">📖</div>
                 <h3>Recipe Management</h3>
