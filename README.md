@@ -27,7 +27,7 @@ Millo is a native iOS and watchOS application designed to simplify meal planning
 - **Homepage:** [English](https://berardino95.github.io/planEat-website/planeat/index.html) | [Italiano](https://berardino95.github.io/planEat-website/planeat/index-it.html)
 - **Support:** [English](https://berardino95.github.io/planEat-website/planeat/support.html) | [Italiano](https://berardino95.github.io/planEat-website/planeat/support-it.html)
 - **Privacy Policy:** [English](https://berardino95.github.io/planEat-website/planeat/privacy-policy.html) | [Italiano](https://berardino95.github.io/planEat-website/planeat/privacy-policy-it.html)
-- **App Store:** [Download Millo](https://apps.apple.com/it/app/planeat/id6741439240)
+- **App Store:** [Download Millo](https://apps.apple.com/it/app/millo-il-tuo-meal-planner/id6741439240)
 
 ### 🎨 Design
 

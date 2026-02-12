@@ -17,7 +17,7 @@ Use these URLs when submitting your app to App Store Connect:
 - **Privacy Policy URL (Privacy):** `https://berardinochiarello.github.io/planeat/privacy-policy-it.html`
 
 ### App Store
-- **Download Link:** `https://apps.apple.com/it/app/planeat/id6741439240`
+- **Download Link:** `https://apps.apple.com/it/app/millo-il-tuo-meal-planner/id6741439240`
 
 ## 📄 Files Included
 
