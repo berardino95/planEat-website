@@ -1,6 +1,6 @@
-# PlanEat - App Store Resources
+# Millo - App Store Resources
 
-This folder contains all the web resources required for publishing PlanEat on the Apple App Store.
+This folder contains all the web resources required for publishing Millo on the Apple App Store.
 
 ## 🔗 URLs for App Store Connect
 
@@ -42,7 +42,7 @@ All email addresses and key information are centralized in `config.js`. To updat
 
 ## 📱 App Information
 
-- **App Name:** PlanEat
+- **App Name:** Millo
 - **Bundle ID:** com.BerardinoChiarello.Lista
 - **Version:** 0.0.5 (Build 2)
 - **Category:** Food & Drink

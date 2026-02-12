@@ -2,11 +2,11 @@
 
 Personal website and app resources for Berardino Chiarello.
 
-## 📱 PlanEat
+## 📱 Millo
 
 **Your Personal Meal Planning Assistant for iOS & Apple Watch**
 
-PlanEat is a native iOS and watchOS application designed to simplify meal planning and grocery shopping. Organize your recipes, plan your meals on a visual calendar, and generate smart shopping lists automatically.
+Millo is a native iOS and watchOS application designed to simplify meal planning and grocery shopping. Organize your recipes, plan your meals on a visual calendar, and generate smart shopping lists automatically.
 
 ### ✨ Key Features
 
@@ -27,7 +27,7 @@ PlanEat is a native iOS and watchOS application designed to simplify meal planni
 - **Homepage:** [English](https://berardino95.github.io/planEat-website/planeat/index.html) | [Italiano](https://berardino95.github.io/planEat-website/planeat/index-it.html)
 - **Support:** [English](https://berardino95.github.io/planEat-website/planeat/support.html) | [Italiano](https://berardino95.github.io/planEat-website/planeat/support-it.html)
 - **Privacy Policy:** [English](https://berardino95.github.io/planEat-website/planeat/privacy-policy.html) | [Italiano](https://berardino95.github.io/planEat-website/planeat/privacy-policy-it.html)
-- **App Store:** [Download PlanEat](https://apps.apple.com/it/app/planeat/id6741439240)
+- **App Store:** [Download Millo](https://apps.apple.com/it/app/planeat/id6741439240)
 
 ### 🎨 Design
 
@@ -67,5 +67,5 @@ planeat/
 
 © 2025 Berardino Chiarello. All rights reserved.
 
-PlanEat is a trademark of Berardino Chiarello.
+Millo is a trademark of Berardino Chiarello.
 Apple, iPhone, Apple Watch, iOS, watchOS, iCloud, and Apple Intelligence are trademarks of Apple Inc.

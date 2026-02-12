@@ -1,10 +1,10 @@
-// Configurazione centralizzata per il sito PlanEat
-const PLANEAT_CONFIG = {
+// Configurazione centralizzata per il sito Millo
+const MILLO_CONFIG = {
     contact: {
         email: 'planeatmobileapp@gmail.com'
     },
     app: {
-        name: 'PlanEat',
+        name: 'Millo',
         developer: 'Berardino Chiarello',
         year: '2025'
     }
@@ -12,7 +12,7 @@ const PLANEAT_CONFIG = {
 
 // Funzione per aggiornare tutti gli elementi email nella pagina
 document.addEventListener('DOMContentLoaded', function() {
-    const email = PLANEAT_CONFIG.contact.email;
+    const email = MILLO_CONFIG.contact.email;
 
     // Aggiorna tutti gli elementi con attributo data-email
     const emailElements = document.querySelectorAll('[data-email]');
