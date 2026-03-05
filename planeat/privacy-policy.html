@@ -88,13 +88,13 @@
 <body>
     <div class="container">
         <h1>Privacy Policy</h1>
-        <p class="last-updated">Last updated: October 9, 2025</p>
+        <p class="last-updated">Last updated: March 5, 2026</p>
 
         <h2>Introduction</h2>
         <p>Millo ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we handle your information when you use our iOS and watchOS mobile application (the "App").</p>
 
         <h2>Information We Collect</h2>
-        <p>Millo is designed with privacy in mind. We do not collect, transmit, or share any personal information with third parties.</p>
+        <p>Millo is designed with privacy in mind. We do not collect any personal information. Optionally, with your explicit consent, we collect anonymous usage and crash data to improve the app.</p>
 
         <h3>Data Stored Locally on Your Device</h3>
         <p>The App stores the following data locally on your device:</p>
@@ -104,7 +104,18 @@
             <li><strong>Shopping Lists:</strong> Your generated shopping lists and purchase status</li>
             <li><strong>Preferences:</strong> Your app settings, category sorting preferences, and tutorial completion status</li>
             <li><strong>Pro Membership Status:</strong> Information about your feature access level</li>
+            <li><strong>Fidelity Cards:</strong> Loyalty card names, card numbers, barcode data, barcode format, and display color</li>
+            <li><strong>Analytics Consent:</strong> Your choice about whether to share anonymous usage data</li>
         </ul>
+
+        <h3>Anonymous Analytics Data (Optional, Consent-Based)</h3>
+        <p>Only if you explicitly accept when prompted, the App collects anonymous usage events such as:</p>
+        <ul>
+            <li>Feature interactions (e.g., recipe created, meal added, shopping list generated)</li>
+            <li>Screens visited within the app</li>
+            <li>Settings changes</li>
+        </ul>
+        <p>This data contains <strong>no personal information, no recipe content, and no identifiable data</strong>. You can change your preference at any time in the app's Settings.</p>
 
         <h2>iCloud Sync</h2>
         <p>If you choose to enable iCloud sync, your data (recipes, meal plans, and shopping lists) will be synchronized across your devices using Apple's iCloud service. This data is:</p>
@@ -124,6 +135,22 @@
             <li>Is not transmitted to any external servers</li>
         </ul>
 
+        <h2>Fidelity Cards</h2>
+        <p>The App includes a fidelity card manager that lets you store your loyalty cards digitally. All card data (card name, card number, barcode, and display color) is stored <strong>exclusively on your device</strong> and, if you have iCloud enabled, in your personal iCloud account.</p>
+        <ul>
+            <li>Card data is never transmitted to our servers</li>
+            <li>To scan a barcode, the App requests access to your device's camera. Camera access is used solely in the moment of scanning and no images are stored or transmitted</li>
+            <li>You can share a fidelity card using the standard iOS sharing mechanism; we do not receive or access any shared data</li>
+        </ul>
+
+        <h2>Siri Shortcuts &amp; App Intents</h2>
+        <p>The App integrates with Apple's App Intents framework to offer Siri Shortcuts. The following actions are available:</p>
+        <ul>
+            <li><strong>Open Fidelity Card:</strong> Ask Siri to open a specific loyalty card directly in the app</li>
+            <li><strong>Add Ingredient to Shopping List:</strong> Ask Siri to add an ingredient (with optional quantity and unit) to your shopping list</li>
+        </ul>
+        <p>Voice interactions are processed entirely by Apple's Siri infrastructure and are subject to <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a>. The App only receives the final structured parameters (card name or ingredient name) from Siri; no audio or voice data is ever accessible to us.</p>
+
         <h2>Data Sharing and Export</h2>
         <p>The App allows you to export and share recipes using our custom .millo file format. When you choose to share or export data:</p>
         <ul>
@@ -133,7 +160,15 @@
         </ul>
 
         <h2>Third-Party Services</h2>
-        <p>Millo does not integrate with any third-party analytics, advertising, or tracking services. Your data remains private to you.</p>
+        <p>Millo does not use any advertising or tracking services. With your consent, the App integrates with the following Firebase services provided by Google:</p>
+
+        <h3>Firebase Analytics</h3>
+        <p>Used to collect anonymous usage statistics when you opt in. Data is processed by Google LLC and subject to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>. Collection is fully disabled if you decline or withdraw consent.</p>
+
+        <h3>Firebase Crashlytics</h3>
+        <p>Used to automatically collect crash reports when the app encounters an unexpected error. This helps us identify and fix stability issues quickly. Crash reports contain technical device information (OS version, app version, stack trace) but <strong>no personal data or app content</strong>. Crashlytics is also disabled if you decline or withdraw consent.</p>
+
+        <p>Both services are enabled only after you explicitly accept the in-app consent prompt. You can opt out at any time via <strong>Settings → Analytics &amp; Crash Reports</strong>.</p>
 
         <h2>Data Security</h2>
         <p>We take data security seriously:</p>

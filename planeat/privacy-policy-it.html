@@ -88,13 +88,13 @@
 <body>
     <div class="container">
         <h1>Informativa sulla Privacy</h1>
-        <p class="last-updated">Ultimo aggiornamento: 9 ottobre 2025</p>
+        <p class="last-updated">Ultimo aggiornamento: 5 marzo 2026</p>
 
         <h2>Introduzione</h2>
         <p>Millo ("noi", "nostro" o "ci") si impegna a proteggere la tua privacy. Questa Informativa sulla Privacy spiega come gestiamo le tue informazioni quando utilizzi la nostra applicazione mobile per iOS e watchOS (l'"App").</p>
 
         <h2>Informazioni che Raccogliamo</h2>
-        <p>Millo è progettata tenendo a mente la privacy. Non raccogliamo, trasmettiamo o condividiamo alcuna informazione personale con terze parti.</p>
+        <p>Millo è progettata tenendo a mente la privacy. Non raccogliamo alcuna informazione personale. Facoltativamente, con il tuo esplicito consenso, raccogliamo dati anonimi sull'utilizzo e i crash per migliorare l'app.</p>
 
         <h3>Dati Memorizzati Localmente sul Tuo Dispositivo</h3>
         <p>L'App memorizza i seguenti dati localmente sul tuo dispositivo:</p>
@@ -104,7 +104,18 @@
             <li><strong>Liste della Spesa:</strong> Le tue liste della spesa generate e lo stato degli acquisti</li>
             <li><strong>Preferenze:</strong> Le tue impostazioni dell'app, preferenze di ordinamento delle categorie e stato di completamento del tutorial</li>
             <li><strong>Stato Abbonamento Pro:</strong> Informazioni sul tuo livello di accesso alle funzionalità</li>
+            <li><strong>Carte Fedeltà:</strong> Nomi delle carte, numeri delle carte, dati del codice a barre, formato del codice a barre e colore di visualizzazione</li>
+            <li><strong>Consenso Analytics:</strong> La tua scelta riguardo alla condivisione di dati anonimi sull'utilizzo</li>
         </ul>
+
+        <h3>Dati Analytics Anonimi (Facoltativi, Basati sul Consenso)</h3>
+        <p>Solo se accetti esplicitamente quando richiesto, l'App raccoglie eventi anonimi sull'utilizzo come:</p>
+        <ul>
+            <li>Interazioni con le funzionalità (ad esempio, ricetta creata, pasto aggiunto, lista della spesa generata)</li>
+            <li>Schermate visitate nell'app</li>
+            <li>Modifiche alle impostazioni</li>
+        </ul>
+        <p>Questi dati non contengono <strong>nessuna informazione personale, nessun contenuto delle ricette e nessun dato identificabile</strong>. Puoi modificare la tua preferenza in qualsiasi momento nelle Impostazioni dell'app.</p>
 
         <h2>Sincronizzazione iCloud</h2>
         <p>Se scegli di abilitare la sincronizzazione iCloud, i tuoi dati (ricette, piani pasto e liste della spesa) verranno sincronizzati tra i tuoi dispositivi utilizzando il servizio iCloud di Apple. Questi dati sono:</p>
@@ -124,6 +135,22 @@
             <li>Non viene trasmesso ad alcun server esterno</li>
         </ul>
 
+        <h2>Carte Fedeltà</h2>
+        <p>L'App include un gestore di carte fedeltà che ti permette di conservare digitalmente le tue carte loyalty. Tutti i dati delle carte (nome, numero, codice a barre e colore di visualizzazione) sono memorizzati <strong>esclusivamente sul tuo dispositivo</strong> e, se hai iCloud abilitato, nel tuo account iCloud personale.</p>
+        <ul>
+            <li>I dati delle carte non vengono mai trasmessi ai nostri server</li>
+            <li>Per scansionare un codice a barre, l'App richiede l'accesso alla fotocamera del dispositivo. L'accesso alla fotocamera viene utilizzato esclusivamente nel momento della scansione e nessuna immagine viene memorizzata o trasmessa</li>
+            <li>Puoi condividere una carta fedeltà tramite il meccanismo di condivisione standard di iOS; non riceviamo né accediamo a nessun dato condiviso</li>
+        </ul>
+
+        <h2>Siri Shortcuts e App Intents</h2>
+        <p>L'App si integra con il framework App Intents di Apple per offrire Siri Shortcuts. Le seguenti azioni sono disponibili:</p>
+        <ul>
+            <li><strong>Apri Carta Fedeltà:</strong> Chiedi a Siri di aprire una carta fedeltà specifica direttamente nell'app</li>
+            <li><strong>Aggiungi Ingrediente alla Lista della Spesa:</strong> Chiedi a Siri di aggiungere un ingrediente (con quantità e unità opzionali) alla tua lista della spesa</li>
+        </ul>
+        <p>Le interazioni vocali sono elaborate interamente dall'infrastruttura Siri di Apple e sono soggette all'<a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Informativa sulla Privacy di Apple</a>. L'App riceve solo i parametri strutturati finali da Siri (nome della carta o nome dell'ingrediente); nessun dato audio o vocale è mai accessibile a noi.</p>
+
         <h2>Condivisione ed Esportazione dei Dati</h2>
         <p>L'App ti consente di esportare e condividere ricette utilizzando il nostro formato file personalizzato .millo. Quando scegli di condividere o esportare dati:</p>
         <ul>
@@ -133,7 +160,15 @@
         </ul>
 
         <h2>Servizi di Terze Parti</h2>
-        <p>Millo non si integra con alcun servizio di analisi, pubblicità o tracciamento di terze parti. I tuoi dati rimangono privati per te.</p>
+        <p>Millo non utilizza alcun servizio pubblicitario o di tracciamento. Con il tuo consenso, l'App si integra con i seguenti servizi Firebase forniti da Google:</p>
+
+        <h3>Firebase Analytics</h3>
+        <p>Utilizzato per raccogliere statistiche anonime sull'utilizzo quando acconsenti. I dati sono elaborati da Google LLC e soggetti alla <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Informativa sulla Privacy di Google</a>. La raccolta è completamente disabilitata se rifiuti o revochi il consenso.</p>
+
+        <h3>Firebase Crashlytics</h3>
+        <p>Utilizzato per raccogliere automaticamente i report di crash quando l'app incontra un errore imprevisto. Questo ci aiuta a identificare e risolvere i problemi di stabilità rapidamente. I report di crash contengono informazioni tecniche del dispositivo (versione OS, versione app, stack trace) ma <strong>nessun dato personale o contenuto dell'app</strong>. Anche Crashlytics è disabilitato se rifiuti o revochi il consenso.</p>
+
+        <p>Entrambi i servizi vengono abilitati solo dopo che hai esplicitamente accettato il prompt di consenso nell'app. Puoi revocare il consenso in qualsiasi momento tramite <strong>Impostazioni → Analytics e Report di Crash</strong>.</p>
 
         <h2>Sicurezza dei Dati</h2>
         <p>Prendiamo sul serio la sicurezza dei dati:</p>
