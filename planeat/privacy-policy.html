@@ -3,96 +3,305 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Millo</title>
+    <title>Privacy Policy — Millo</title>
     <script src="config.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
     <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:           #0A0A0A;
+            --surface:      #141414;
+            --surface-alt:  #1C1C1C;
+            --border:       rgba(21, 175, 170, 0.14);
+            --border-hover: rgba(21, 175, 170, 0.32);
+            --text:         #EDE5D0;
+            --text-muted:   #9A8B74;
+            --text-subtle:  #5A5044;
+            --amber:        #15AFAA;
+            --amber-light:  #1EC9C3;
+            --amber-dim:    rgba(21, 175, 170, 0.10);
+            --radius:       14px;
+            --radius-sm:    9px;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body:    'DM Sans', -apple-system, sans-serif;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg:           #F8F7F5;
+                --surface:      #FFFFFF;
+                --surface-alt:  #F0EFEC;
+                --border:       rgba(21, 175, 170, 0.18);
+                --border-hover: rgba(21, 175, 170, 0.40);
+                --text:         #1A1A18;
+                --text-muted:   #6B6055;
+                --text-subtle:  #A09080;
+                --amber-dim:    rgba(21, 175, 170, 0.07);
+            }
+        }
+
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: linear-gradient(135deg, #00D4C4 0%, #00B8AA 100%);
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 20px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
             min-height: 100vh;
         }
-        h1 {
-            color: #1a1a1a;
-            border-bottom: 3px solid #00D4C4;
-            padding-bottom: 15px;
-            font-weight: 700;
-            font-size: 32px;
+
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 28px 96px;
         }
-        h2 {
-            color: #1a1a1a;
-            margin-top: 35px;
-            font-weight: 700;
-            font-size: 24px;
+
+        /* ── Header ── */
+        .site-header { padding: 44px 0 64px; }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-subtle);
+            text-decoration: none;
+            transition: color 0.2s;
+            margin-bottom: 52px;
         }
-        h3 {
-            color: #00B8AA;
-            margin-top: 25px;
+        .back-link:hover { color: var(--amber); }
+        .back-link svg {
+            width: 13px; height: 13px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .app-icon {
+            width: 72px; height: 72px;
+            border-radius: 18px;
+            flex-shrink: 0;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+        }
+
+        .header-text h1 {
+            font-family: var(--font-display);
+            font-size: clamp(45px, 6vw, 65px);
             font-weight: 600;
-            font-size: 20px;
-        }
-        .container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            line-height: 1.05;
+            letter-spacing: -0.01em;
+            color: var(--text);
         }
         .last-updated {
-            color: #888;
+            color: var(--text-subtle);
+            font-size: 16px;
             font-style: italic;
-            margin-bottom: 25px;
-            font-size: 15px;
+            margin-top: 8px;
         }
+
+        /* ── TOC ── */
+        .toc {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 22px 24px;
+            margin-bottom: 60px;
+        }
+        .toc-label {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            color: var(--text-subtle);
+            margin-bottom: 14px;
+        }
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            columns: 2;
+            column-gap: 24px;
+        }
+        .toc-list li { margin-bottom: 7px; break-inside: avoid; }
+        .toc-list a {
+            font-size: 17px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .toc-list a:hover { color: var(--amber); }
+
+        /* ── Prose sections ── */
+        .section { margin-bottom: 52px; }
+
+        h2 {
+            font-family: var(--font-display);
+            font-size: clamp(28px, 3.5vw, 35px);
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            scroll-margin-top: 24px;
+        }
+        h2::before {
+            content: '';
+            display: block;
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--amber);
+            flex-shrink: 0;
+        }
+
+        h3 {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text);
+            margin: 28px 0 12px;
+            padding-left: 18px;
+            border-left: 2px solid var(--border-hover);
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 19px;
+            line-height: 1.78;
+            margin-bottom: 14px;
+        }
+        p:last-child { margin-bottom: 0; }
+
         ul {
-            padding-left: 25px;
+            padding-left: 22px;
+            margin: 12px 0 14px;
         }
         li {
-            margin-bottom: 12px;
+            color: var(--text-muted);
+            font-size: 19px;
+            line-height: 1.7;
+            margin-bottom: 8px;
         }
-        .contact {
-            background: linear-gradient(135deg, #f0fffe 0%, #e0fbf9 100%);
-            padding: 20px;
-            border-radius: 14px;
-            margin-top: 25px;
-            border: 2px solid #d0f5f2;
+        strong { color: var(--text); font-weight: 500; }
+
+        a { color: var(--amber); text-decoration: none; }
+        a:hover { color: var(--amber-light); text-decoration: underline; }
+
+        /* ── Section divider ── */
+        .section-divider {
+            height: 1px;
+            background: var(--border);
+            margin: 52px 0;
         }
-        a {
-            color: #00D4C4;
-            text-decoration: none;
-            font-weight: 600;
+
+        /* ── Contact box ── */
+        .contact-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            margin-top: 16px;
         }
-        a:hover {
-            color: #00B8AA;
-            text-decoration: underline;
+        .contact-box p { margin: 0; }
+        .contact-box p + p { margin-top: 8px; }
+
+        /* ── Footer ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding-top: 32px;
+            text-align: center;
+            color: var(--text-subtle);
+            font-size: 16px;
+            line-height: 1.9;
         }
-        @media (max-width: 768px) {
-            .container {
-                padding: 25px;
-            }
-            h1 {
-                font-size: 26px;
-            }
-            h2 {
-                font-size: 20px;
-            }
-            h3 {
-                font-size: 18px;
-            }
+
+        /* ── Animations ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .site-header { animation: fadeUp 0.45s ease both; animation-delay: 0.0s; }
+        .toc         { animation: fadeUp 0.45s ease both; animation-delay: 0.07s; }
+        .section     { animation: fadeUp 0.45s ease both; }
+        .section:nth-of-type(1)  { animation-delay: 0.10s; }
+        .section:nth-of-type(2)  { animation-delay: 0.14s; }
+        .section:nth-of-type(3)  { animation-delay: 0.18s; }
+        .section:nth-of-type(4)  { animation-delay: 0.21s; }
+        .section:nth-of-type(5)  { animation-delay: 0.24s; }
+        .section:nth-of-type(6)  { animation-delay: 0.27s; }
+        .section:nth-of-type(7)  { animation-delay: 0.30s; }
+        .section:nth-of-type(8)  { animation-delay: 0.33s; }
+        .section:nth-of-type(9)  { animation-delay: 0.36s; }
+        .section:nth-of-type(10) { animation-delay: 0.39s; }
+        .section:nth-of-type(11) { animation-delay: 0.42s; }
+        footer { animation: fadeUp 0.45s ease both; animation-delay: 0.46s; }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            .page { padding: 0 18px 72px; }
+            .site-header { padding: 28px 0 44px; }
+            .back-link { margin-bottom: 36px; }
+            .header-inner { flex-direction: column; gap: 16px; }
+            .app-icon { width: 60px; height: 60px; border-radius: 15px; }
+            .toc-list { columns: 1; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Privacy Policy</h1>
-        <p class="last-updated">Last updated: March 5, 2026</p>
+<div class="page">
 
+    <header class="site-header">
+        <a href="index.html" class="back-link">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+            Millo
+        </a>
+        <div class="header-inner">
+            <img src="app-icon.png" class="app-icon" alt="Millo">
+            <div class="header-text">
+                <h1>Privacy Policy</h1>
+                <p class="last-updated">Last updated: March 5, 2026</p>
+            </div>
+        </div>
+    </header>
+
+    <nav class="toc">
+        <p class="toc-label">Contents</p>
+        <ol class="toc-list">
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#information">Information We Collect</a></li>
+            <li><a href="#icloud">iCloud Sync</a></li>
+            <li><a href="#watch">Apple Watch</a></li>
+            <li><a href="#cards">Fidelity Cards</a></li>
+            <li><a href="#siri">Siri Shortcuts</a></li>
+            <li><a href="#sharing">Data Sharing</a></li>
+            <li><a href="#third-party">Third-Party Services</a></li>
+            <li><a href="#security">Data Security</a></li>
+            <li><a href="#children">Children's Privacy</a></li>
+            <li><a href="#rights">Your Rights</a></li>
+            <li><a href="#changes">Changes</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ol>
+    </nav>
+
+    <section class="section" id="introduction">
         <h2>Introduction</h2>
         <p>Millo ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we handle your information when you use our iOS and watchOS mobile application (the "App").</p>
+    </section>
 
+    <section class="section" id="information">
         <h2>Information We Collect</h2>
         <p>Millo is designed with privacy in mind. We do not collect any personal information. Optionally, with your explicit consent, we collect anonymous usage and crash data to improve the app.</p>
 
@@ -104,7 +313,7 @@
             <li><strong>Shopping Lists:</strong> Your generated shopping lists and purchase status</li>
             <li><strong>Preferences:</strong> Your app settings, category sorting preferences, and tutorial completion status</li>
             <li><strong>Pro Membership Status:</strong> Information about your feature access level</li>
-            <li><strong>Fidelity Cards:</strong> Loyalty card names, card numbers, barcode data, barcode format, and display color</li>
+            <li><strong>Fidelity Cards:</strong> Loyalty card names, card numbers, barcode data, barcode format, and display colour</li>
             <li><strong>Analytics Consent:</strong> Your choice about whether to share anonymous usage data</li>
         </ul>
 
@@ -116,9 +325,11 @@
             <li>Settings changes</li>
         </ul>
         <p>This data contains <strong>no personal information, no recipe content, and no identifiable data</strong>. You can change your preference at any time in the app's Settings.</p>
+    </section>
 
+    <section class="section" id="icloud">
         <h2>iCloud Sync</h2>
-        <p>If you choose to enable iCloud sync, your data (recipes, meal plans, and shopping lists) will be synchronized across your devices using Apple's iCloud service. This data is:</p>
+        <p>If you choose to enable iCloud sync, your data (recipes, meal plans, and shopping lists) will be synchronised across your devices using Apple's iCloud service. This data is:</p>
         <ul>
             <li>Encrypted by Apple</li>
             <li>Stored in your personal iCloud account</li>
@@ -126,23 +337,29 @@
             <li>Subject to Apple's Privacy Policy</li>
         </ul>
         <p>You can disable iCloud sync at any time through your device settings.</p>
+    </section>
 
+    <section class="section" id="watch">
         <h2>Apple Watch Integration</h2>
-        <p>If you use the Apple Watch companion app, your shopping list data is synchronized between your iPhone and Apple Watch using WatchConnectivity framework. This data transfer:</p>
+        <p>If you use the Apple Watch companion app, your shopping list data is synchronised between your iPhone and Apple Watch using the WatchConnectivity framework. This data transfer:</p>
         <ul>
             <li>Occurs only between your paired devices</li>
             <li>Is handled by Apple's secure communication protocols</li>
             <li>Is not transmitted to any external servers</li>
         </ul>
+    </section>
 
+    <section class="section" id="cards">
         <h2>Fidelity Cards</h2>
-        <p>The App includes a fidelity card manager that lets you store your loyalty cards digitally. All card data (card name, card number, barcode, and display color) is stored <strong>exclusively on your device</strong> and, if you have iCloud enabled, in your personal iCloud account.</p>
+        <p>The App includes a fidelity card manager that lets you store your loyalty cards digitally. All card data (card name, card number, barcode, and display colour) is stored <strong>exclusively on your device</strong> and, if you have iCloud enabled, in your personal iCloud account.</p>
         <ul>
             <li>Card data is never transmitted to our servers</li>
             <li>To scan a barcode, the App requests access to your device's camera. Camera access is used solely in the moment of scanning and no images are stored or transmitted</li>
             <li>You can share a fidelity card using the standard iOS sharing mechanism; we do not receive or access any shared data</li>
         </ul>
+    </section>
 
+    <section class="section" id="siri">
         <h2>Siri Shortcuts &amp; App Intents</h2>
         <p>The App integrates with Apple's App Intents framework to offer Siri Shortcuts. The following actions are available:</p>
         <ul>
@@ -150,7 +367,9 @@
             <li><strong>Add Ingredient to Shopping List:</strong> Ask Siri to add an ingredient (with optional quantity and unit) to your shopping list</li>
         </ul>
         <p>Voice interactions are processed entirely by Apple's Siri infrastructure and are subject to <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a>. The App only receives the final structured parameters (card name or ingredient name) from Siri; no audio or voice data is ever accessible to us.</p>
+    </section>
 
+    <section class="section" id="sharing">
         <h2>Data Sharing and Export</h2>
         <p>The App allows you to export and share recipes using our custom .millo file format. When you choose to share or export data:</p>
         <ul>
@@ -158,7 +377,9 @@
             <li>Data is only shared through the standard iOS sharing mechanism</li>
             <li>We do not receive or access any shared data</li>
         </ul>
+    </section>
 
+    <section class="section" id="third-party">
         <h2>Third-Party Services</h2>
         <p>Millo does not use any advertising or tracking services. With your consent, the App integrates with the following Firebase services provided by Google:</p>
 
@@ -169,7 +390,9 @@
         <p>Used to automatically collect crash reports when the app encounters an unexpected error. This helps us identify and fix stability issues quickly. Crash reports contain technical device information (OS version, app version, stack trace) but <strong>no personal data or app content</strong>. Crashlytics is also disabled if you decline or withdraw consent.</p>
 
         <p>Both services are enabled only after you explicitly accept the in-app consent prompt. You can opt out at any time via <strong>Settings → Analytics &amp; Crash Reports</strong>.</p>
+    </section>
 
+    <section class="section" id="security">
         <h2>Data Security</h2>
         <p>We take data security seriously:</p>
         <ul>
@@ -178,10 +401,14 @@
             <li>iCloud data is encrypted by Apple</li>
             <li>We do not have access to your data</li>
         </ul>
+    </section>
 
+    <section class="section" id="children">
         <h2>Children's Privacy</h2>
         <p>Millo does not knowingly collect any information from children. The App is suitable for all ages as it stores all data locally and does not collect personal information.</p>
+    </section>
 
+    <section class="section" id="rights">
         <h2>Your Rights</h2>
         <p>Since all your data is stored locally on your device, you have complete control over your information:</p>
         <ul>
@@ -190,20 +417,26 @@
             <li><strong>Deletion:</strong> Deleting the App will remove all locally stored data. To delete iCloud data, you must remove it through your iCloud settings</li>
             <li><strong>Export:</strong> You can export your recipes using the share functionality</li>
         </ul>
+    </section>
 
+    <section class="section" id="changes">
         <h2>Changes to This Privacy Policy</h2>
         <p>We may update this Privacy Policy from time to time. We will notify you of any changes by updating the "Last updated" date at the top of this policy. Continued use of the App after any changes constitutes acceptance of the updated Privacy Policy.</p>
+    </section>
 
+    <section class="section" id="contact">
         <h2>Contact Us</h2>
-        <div class="contact">
-            <p>If you have any questions about this Privacy Policy, please contact us:</p>
+        <p>If you have any questions about this Privacy Policy, please contact us:</p>
+        <div class="contact-box">
             <p><strong>Email:</strong> <a href="mailto:" data-email></a></p>
         </div>
+    </section>
 
-        <hr style="margin-top: 40px; border: none; border-top: 1px solid #ddd;">
-        <p style="text-align: center; color: #7f8c8d; font-size: 14px;">
-            &copy; 2025 Berardino Chiarello. All rights reserved.
-        </p>
-    </div>
+    <footer>
+        <p>&copy; 2025 Berardino Chiarello. All rights reserved.</p>
+        <p><a href="support.html">Support</a> · <a href="privacy-policy-it.html">Italiano</a></p>
+    </footer>
+
+</div>
 </body>
 </html>

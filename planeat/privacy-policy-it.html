@@ -3,96 +3,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informativa sulla Privacy - Millo</title>
+    <title>Informativa sulla Privacy — Millo</title>
     <script src="config.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
     <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:           #0A0A0A;
+            --surface:      #141414;
+            --surface-alt:  #1C1C1C;
+            --border:       rgba(21, 175, 170, 0.14);
+            --border-hover: rgba(21, 175, 170, 0.32);
+            --text:         #EDE5D0;
+            --text-muted:   #9A8B74;
+            --text-subtle:  #5A5044;
+            --amber:        #15AFAA;
+            --amber-light:  #1EC9C3;
+            --amber-dim:    rgba(21, 175, 170, 0.10);
+            --radius:       14px;
+            --radius-sm:    9px;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body:    'DM Sans', -apple-system, sans-serif;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg:           #F8F7F5;
+                --surface:      #FFFFFF;
+                --surface-alt:  #F0EFEC;
+                --border:       rgba(21, 175, 170, 0.18);
+                --border-hover: rgba(21, 175, 170, 0.40);
+                --text:         #1A1A18;
+                --text-muted:   #6B6055;
+                --text-subtle:  #A09080;
+                --amber-dim:    rgba(21, 175, 170, 0.07);
+            }
+        }
+
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: linear-gradient(135deg, #00D4C4 0%, #00B8AA 100%);
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 20px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
             min-height: 100vh;
         }
-        h1 {
-            color: #1a1a1a;
-            border-bottom: 3px solid #00D4C4;
-            padding-bottom: 15px;
-            font-weight: 700;
-            font-size: 32px;
+
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 28px 96px;
         }
-        h2 {
-            color: #1a1a1a;
-            margin-top: 35px;
-            font-weight: 700;
-            font-size: 24px;
+
+        .site-header { padding: 44px 0 64px; }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-subtle);
+            text-decoration: none;
+            transition: color 0.2s;
+            margin-bottom: 52px;
         }
-        h3 {
-            color: #00B8AA;
-            margin-top: 25px;
+        .back-link:hover { color: var(--amber); }
+        .back-link svg {
+            width: 13px; height: 13px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .app-icon {
+            width: 72px; height: 72px;
+            border-radius: 18px;
+            flex-shrink: 0;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+        }
+
+        .header-text h1 {
+            font-family: var(--font-display);
+            font-size: clamp(40px, 5.5vw, 60px);
             font-weight: 600;
-            font-size: 20px;
-        }
-        .container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            line-height: 1.05;
+            letter-spacing: -0.01em;
+            color: var(--text);
         }
         .last-updated {
-            color: #888;
+            color: var(--text-subtle);
+            font-size: 16px;
             font-style: italic;
-            margin-bottom: 25px;
-            font-size: 15px;
+            margin-top: 8px;
         }
+
+        .toc {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 22px 24px;
+            margin-bottom: 60px;
+        }
+        .toc-label {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            color: var(--text-subtle);
+            margin-bottom: 14px;
+        }
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            columns: 2;
+            column-gap: 24px;
+        }
+        .toc-list li { margin-bottom: 7px; break-inside: avoid; }
+        .toc-list a {
+            font-size: 17px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .toc-list a:hover { color: var(--amber); }
+
+        .section { margin-bottom: 52px; }
+
+        h2 {
+            font-family: var(--font-display);
+            font-size: clamp(28px, 3.5vw, 35px);
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            scroll-margin-top: 24px;
+        }
+        h2::before {
+            content: '';
+            display: block;
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--amber);
+            flex-shrink: 0;
+        }
+
+        h3 {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text);
+            margin: 28px 0 12px;
+            padding-left: 18px;
+            border-left: 2px solid var(--border-hover);
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 19px;
+            line-height: 1.78;
+            margin-bottom: 14px;
+        }
+        p:last-child { margin-bottom: 0; }
+
         ul {
-            padding-left: 25px;
+            padding-left: 22px;
+            margin: 12px 0 14px;
         }
         li {
-            margin-bottom: 12px;
+            color: var(--text-muted);
+            font-size: 19px;
+            line-height: 1.7;
+            margin-bottom: 8px;
         }
-        .contact {
-            background: linear-gradient(135deg, #f0fffe 0%, #e0fbf9 100%);
-            padding: 20px;
-            border-radius: 14px;
-            margin-top: 25px;
-            border: 2px solid #d0f5f2;
+        strong { color: var(--text); font-weight: 500; }
+
+        a { color: var(--amber); text-decoration: none; }
+        a:hover { color: var(--amber-light); text-decoration: underline; }
+
+        .contact-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            margin-top: 16px;
         }
-        a {
-            color: #00D4C4;
-            text-decoration: none;
-            font-weight: 600;
+        .contact-box p { margin: 0; }
+        .contact-box p + p { margin-top: 8px; }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding-top: 32px;
+            text-align: center;
+            color: var(--text-subtle);
+            font-size: 16px;
+            line-height: 1.9;
         }
-        a:hover {
-            color: #00B8AA;
-            text-decoration: underline;
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
-        @media (max-width: 768px) {
-            .container {
-                padding: 25px;
-            }
-            h1 {
-                font-size: 26px;
-            }
-            h2 {
-                font-size: 20px;
-            }
-            h3 {
-                font-size: 18px;
-            }
+        .site-header { animation: fadeUp 0.45s ease both; animation-delay: 0.0s; }
+        .toc         { animation: fadeUp 0.45s ease both; animation-delay: 0.07s; }
+        .section     { animation: fadeUp 0.45s ease both; }
+        .section:nth-of-type(1)  { animation-delay: 0.10s; }
+        .section:nth-of-type(2)  { animation-delay: 0.14s; }
+        .section:nth-of-type(3)  { animation-delay: 0.18s; }
+        .section:nth-of-type(4)  { animation-delay: 0.21s; }
+        .section:nth-of-type(5)  { animation-delay: 0.24s; }
+        .section:nth-of-type(6)  { animation-delay: 0.27s; }
+        .section:nth-of-type(7)  { animation-delay: 0.30s; }
+        .section:nth-of-type(8)  { animation-delay: 0.33s; }
+        .section:nth-of-type(9)  { animation-delay: 0.36s; }
+        .section:nth-of-type(10) { animation-delay: 0.39s; }
+        .section:nth-of-type(11) { animation-delay: 0.42s; }
+        footer { animation: fadeUp 0.45s ease both; animation-delay: 0.46s; }
+
+        @media (max-width: 600px) {
+            .page { padding: 0 18px 72px; }
+            .site-header { padding: 28px 0 44px; }
+            .back-link { margin-bottom: 36px; }
+            .header-inner { flex-direction: column; gap: 16px; }
+            .app-icon { width: 60px; height: 60px; border-radius: 15px; }
+            .toc-list { columns: 1; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Informativa sulla Privacy</h1>
-        <p class="last-updated">Ultimo aggiornamento: 5 marzo 2026</p>
+<div class="page">
 
+    <header class="site-header">
+        <a href="index-it.html" class="back-link">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+            Millo
+        </a>
+        <div class="header-inner">
+            <img src="app-icon.png" class="app-icon" alt="Millo">
+            <div class="header-text">
+                <h1>Informativa sulla Privacy</h1>
+                <p class="last-updated">Ultimo aggiornamento: 5 marzo 2026</p>
+            </div>
+        </div>
+    </header>
+
+    <nav class="toc">
+        <p class="toc-label">Contenuti</p>
+        <ol class="toc-list">
+            <li><a href="#introduzione">Introduzione</a></li>
+            <li><a href="#informazioni">Informazioni Raccolte</a></li>
+            <li><a href="#icloud">Sincronizzazione iCloud</a></li>
+            <li><a href="#watch">Apple Watch</a></li>
+            <li><a href="#carte">Carte Fedeltà</a></li>
+            <li><a href="#siri">Siri Shortcuts</a></li>
+            <li><a href="#condivisione">Condivisione Dati</a></li>
+            <li><a href="#terze-parti">Servizi di Terze Parti</a></li>
+            <li><a href="#sicurezza">Sicurezza dei Dati</a></li>
+            <li><a href="#minori">Privacy dei Minori</a></li>
+            <li><a href="#diritti">I Tuoi Diritti</a></li>
+            <li><a href="#modifiche">Modifiche</a></li>
+            <li><a href="#contatti">Contattaci</a></li>
+        </ol>
+    </nav>
+
+    <section class="section" id="introduzione">
         <h2>Introduzione</h2>
         <p>Millo ("noi", "nostro" o "ci") si impegna a proteggere la tua privacy. Questa Informativa sulla Privacy spiega come gestiamo le tue informazioni quando utilizzi la nostra applicazione mobile per iOS e watchOS (l'"App").</p>
+    </section>
 
+    <section class="section" id="informazioni">
         <h2>Informazioni che Raccogliamo</h2>
         <p>Millo è progettata tenendo a mente la privacy. Non raccogliamo alcuna informazione personale. Facoltativamente, con il tuo esplicito consenso, raccogliamo dati anonimi sull'utilizzo e i crash per migliorare l'app.</p>
 
@@ -116,7 +311,9 @@
             <li>Modifiche alle impostazioni</li>
         </ul>
         <p>Questi dati non contengono <strong>nessuna informazione personale, nessun contenuto delle ricette e nessun dato identificabile</strong>. Puoi modificare la tua preferenza in qualsiasi momento nelle Impostazioni dell'app.</p>
+    </section>
 
+    <section class="section" id="icloud">
         <h2>Sincronizzazione iCloud</h2>
         <p>Se scegli di abilitare la sincronizzazione iCloud, i tuoi dati (ricette, piani pasto e liste della spesa) verranno sincronizzati tra i tuoi dispositivi utilizzando il servizio iCloud di Apple. Questi dati sono:</p>
         <ul>
@@ -126,7 +323,9 @@
             <li>Soggetti all'Informativa sulla Privacy di Apple</li>
         </ul>
         <p>Puoi disabilitare la sincronizzazione iCloud in qualsiasi momento tramite le impostazioni del tuo dispositivo.</p>
+    </section>
 
+    <section class="section" id="watch">
         <h2>Integrazione Apple Watch</h2>
         <p>Se utilizzi l'app companion per Apple Watch, i dati della tua lista della spesa vengono sincronizzati tra il tuo iPhone e Apple Watch utilizzando il framework WatchConnectivity. Questo trasferimento dati:</p>
         <ul>
@@ -134,7 +333,9 @@
             <li>È gestito dai protocolli di comunicazione sicuri di Apple</li>
             <li>Non viene trasmesso ad alcun server esterno</li>
         </ul>
+    </section>
 
+    <section class="section" id="carte">
         <h2>Carte Fedeltà</h2>
         <p>L'App include un gestore di carte fedeltà che ti permette di conservare digitalmente le tue carte loyalty. Tutti i dati delle carte (nome, numero, codice a barre e colore di visualizzazione) sono memorizzati <strong>esclusivamente sul tuo dispositivo</strong> e, se hai iCloud abilitato, nel tuo account iCloud personale.</p>
         <ul>
@@ -142,7 +343,9 @@
             <li>Per scansionare un codice a barre, l'App richiede l'accesso alla fotocamera del dispositivo. L'accesso alla fotocamera viene utilizzato esclusivamente nel momento della scansione e nessuna immagine viene memorizzata o trasmessa</li>
             <li>Puoi condividere una carta fedeltà tramite il meccanismo di condivisione standard di iOS; non riceviamo né accediamo a nessun dato condiviso</li>
         </ul>
+    </section>
 
+    <section class="section" id="siri">
         <h2>Siri Shortcuts e App Intents</h2>
         <p>L'App si integra con il framework App Intents di Apple per offrire Siri Shortcuts. Le seguenti azioni sono disponibili:</p>
         <ul>
@@ -150,7 +353,9 @@
             <li><strong>Aggiungi Ingrediente alla Lista della Spesa:</strong> Chiedi a Siri di aggiungere un ingrediente (con quantità e unità opzionali) alla tua lista della spesa</li>
         </ul>
         <p>Le interazioni vocali sono elaborate interamente dall'infrastruttura Siri di Apple e sono soggette all'<a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Informativa sulla Privacy di Apple</a>. L'App riceve solo i parametri strutturati finali da Siri (nome della carta o nome dell'ingrediente); nessun dato audio o vocale è mai accessibile a noi.</p>
+    </section>
 
+    <section class="section" id="condivisione">
         <h2>Condivisione ed Esportazione dei Dati</h2>
         <p>L'App ti consente di esportare e condividere ricette utilizzando il nostro formato file personalizzato .millo. Quando scegli di condividere o esportare dati:</p>
         <ul>
@@ -158,7 +363,9 @@
             <li>I dati vengono condivisi solo tramite il meccanismo di condivisione standard di iOS</li>
             <li>Non riceviamo né accediamo a nessun dato condiviso</li>
         </ul>
+    </section>
 
+    <section class="section" id="terze-parti">
         <h2>Servizi di Terze Parti</h2>
         <p>Millo non utilizza alcun servizio pubblicitario o di tracciamento. Con il tuo consenso, l'App si integra con i seguenti servizi Firebase forniti da Google:</p>
 
@@ -169,7 +376,9 @@
         <p>Utilizzato per raccogliere automaticamente i report di crash quando l'app incontra un errore imprevisto. Questo ci aiuta a identificare e risolvere i problemi di stabilità rapidamente. I report di crash contengono informazioni tecniche del dispositivo (versione OS, versione app, stack trace) ma <strong>nessun dato personale o contenuto dell'app</strong>. Anche Crashlytics è disabilitato se rifiuti o revochi il consenso.</p>
 
         <p>Entrambi i servizi vengono abilitati solo dopo che hai esplicitamente accettato il prompt di consenso nell'app. Puoi revocare il consenso in qualsiasi momento tramite <strong>Impostazioni → Analytics e Report di Crash</strong>.</p>
+    </section>
 
+    <section class="section" id="sicurezza">
         <h2>Sicurezza dei Dati</h2>
         <p>Prendiamo sul serio la sicurezza dei dati:</p>
         <ul>
@@ -178,10 +387,14 @@
             <li>I dati iCloud sono crittografati da Apple</li>
             <li>Non abbiamo accesso ai tuoi dati</li>
         </ul>
+    </section>
 
+    <section class="section" id="minori">
         <h2>Privacy dei Minori</h2>
         <p>Millo non raccoglie consapevolmente alcuna informazione da minori. L'App è adatta a tutte le età in quanto memorizza tutti i dati localmente e non raccoglie informazioni personali.</p>
+    </section>
 
+    <section class="section" id="diritti">
         <h2>I Tuoi Diritti</h2>
         <p>Poiché tutti i tuoi dati sono memorizzati localmente sul tuo dispositivo, hai il controllo completo sulle tue informazioni:</p>
         <ul>
@@ -190,20 +403,26 @@
             <li><strong>Cancellazione:</strong> L'eliminazione dell'App rimuoverà tutti i dati memorizzati localmente. Per eliminare i dati iCloud, devi rimuoverli tramite le impostazioni di iCloud</li>
             <li><strong>Esportazione:</strong> Puoi esportare le tue ricette utilizzando la funzionalità di condivisione</li>
         </ul>
+    </section>
 
-        <h2>Modifiche a Questa Informativa sulla Privacy</h2>
+    <section class="section" id="modifiche">
+        <h2>Modifiche a Questa Informativa</h2>
         <p>Potremmo aggiornare questa Informativa sulla Privacy di tanto in tanto. Ti informeremo di eventuali modifiche aggiornando la data "Ultimo aggiornamento" all'inizio di questa informativa. L'uso continuato dell'App dopo eventuali modifiche costituisce accettazione dell'Informativa sulla Privacy aggiornata.</p>
+    </section>
 
+    <section class="section" id="contatti">
         <h2>Contattaci</h2>
-        <div class="contact">
-            <p>Se hai domande su questa Informativa sulla Privacy, contattaci:</p>
+        <p>Se hai domande su questa Informativa sulla Privacy, contattaci:</p>
+        <div class="contact-box">
             <p><strong>Email:</strong> <a href="mailto:" data-email></a></p>
         </div>
+    </section>
 
-        <hr style="margin-top: 40px; border: none; border-top: 1px solid #ddd;">
-        <p style="text-align: center; color: #7f8c8d; font-size: 14px;">
-            &copy; 2025 Berardino Chiarello. Tutti i diritti riservati.
-        </p>
-    </div>
+    <footer>
+        <p>&copy; 2025 Berardino Chiarello. Tutti i diritti riservati.</p>
+        <p><a href="support-it.html">Supporto</a> · <a href="privacy-policy.html">English</a></p>
+    </footer>
+
+</div>
 </body>
 </html>

@@ -3,291 +3,769 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support - Millo</title>
+    <title>Support — Millo</title>
     <script src="config.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
     <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:           #0A0A0A;
+            --surface:      #141414;
+            --surface-alt:  #1C1C1C;
+            --border:       rgba(21, 175, 170, 0.14);
+            --border-hover: rgba(21, 175, 170, 0.32);
+            --text:         #EDE5D0;
+            --text-muted:   #9A8B74;
+            --text-subtle:  #5A5044;
+            --amber:        #15AFAA;
+            --amber-light:  #1EC9C3;
+            --amber-dim:    rgba(21, 175, 170, 0.10);
+            --radius:       14px;
+            --radius-sm:    9px;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body:    'DM Sans', -apple-system, sans-serif;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg:           #F8F7F5;
+                --surface:      #FFFFFF;
+                --surface-alt:  #F0EFEC;
+                --border:       rgba(21, 175, 170, 0.18);
+                --border-hover: rgba(21, 175, 170, 0.40);
+                --text:         #1A1A18;
+                --text-muted:   #6B6055;
+                --text-subtle:  #A09080;
+                --amber-dim:    rgba(21, 175, 170, 0.07);
+            }
+            .email-button { color: #FFFFFF; }
+            .email-button:hover { color: #FFFFFF; }
+        }
+
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: linear-gradient(135deg, #00D4C4 0%, #00B8AA 100%);
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 20px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
             min-height: 100vh;
         }
-        h1 {
-            color: #1a1a1a;
-            border-bottom: 3px solid #00D4C4;
-            padding-bottom: 15px;
-            font-weight: 700;
-            font-size: 32px;
+
+        /* ── Layout ── */
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 28px 96px;
         }
+
+        /* ── Header ── */
+        .site-header {
+            padding: 44px 0 64px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-subtle);
+            text-decoration: none;
+            transition: color 0.2s;
+            margin-bottom: 52px;
+        }
+        .back-link:hover { color: var(--amber); }
+        .back-link svg {
+            width: 13px; height: 13px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .app-icon {
+            width: 72px; height: 72px;
+            border-radius: 18px;
+            flex-shrink: 0;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+        }
+
+        .header-text h1 {
+            font-family: var(--font-display);
+            font-size: clamp(50px, 7vw, 75px);
+            font-weight: 600;
+            line-height: 1.0;
+            letter-spacing: -0.01em;
+            color: var(--text);
+        }
+        .header-text .subtitle {
+            color: var(--text-muted);
+            font-size: 19px;
+            font-weight: 300;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        /* ── Intro banner ── */
+        .intro-banner {
+            background: var(--amber-dim);
+            border: 1px solid var(--border-hover);
+            border-radius: var(--radius);
+            padding: 26px 30px;
+            margin-bottom: 60px;
+        }
+        .intro-banner .intro-title {
+            font-family: var(--font-display);
+            font-size: 26px;
+            font-weight: 600;
+            color: var(--amber-light);
+            margin-bottom: 6px;
+        }
+        .intro-banner p {
+            color: var(--text-muted);
+            font-size: 19px;
+        }
+
+        /* ── Sections ── */
+        .section { margin-bottom: 60px; }
+
+        .section-header { margin-bottom: 24px; }
+
         h2 {
-            color: #1a1a1a;
-            margin-top: 35px;
-            font-weight: 700;
-            font-size: 24px;
+            font-family: var(--font-display);
+            font-size: clamp(30px, 4vw, 38px);
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
-        .container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        h2::before {
+            content: '';
+            display: block;
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--amber);
+            flex-shrink: 0;
         }
-        .intro {
-            background: linear-gradient(135deg, #e8fffe 0%, #d4f9f7 100%);
-            padding: 25px;
-            border-radius: 14px;
-            margin-bottom: 35px;
-            border-left: 5px solid #00D4C4;
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 18px;
+            margin-top: 8px;
+            padding-left: 18px;
         }
-        .faq-item {
-            margin-bottom: 25px;
-            padding: 20px;
-            background-color: #f8fffe;
-            border-radius: 12px;
-            border: 2px solid #e8f9f7;
-            transition: all 0.3s ease;
+
+        /* ── Feature chips ── */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
         }
-        .faq-item:hover {
-            border-color: #00D4C4;
-            box-shadow: 0 5px 15px rgba(0, 212, 196, 0.1);
+        .feature-chip {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 14px 16px;
+            font-size: 17px;
+            color: var(--text-muted);
+            line-height: 1.45;
+            transition: border-color 0.2s, background 0.2s;
         }
-        .faq-item h3 {
-            color: #00B8AA;
-            margin-top: 0;
+        .feature-chip:hover {
+            border-color: var(--border-hover);
+            background: var(--surface-alt);
+        }
+        .feature-chip strong {
+            display: block;
+            font-size: 17px;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        /* ── Accordion ── */
+        .accordion { display: flex; flex-direction: column; gap: 3px; }
+
+        details.acc-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        details.acc-item[open] {
+            border-color: var(--border-hover);
+            background: var(--surface-alt);
+        }
+        details.acc-item summary {
+            padding: 18px 20px;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            font-size: 19px;
+            color: var(--text);
+            user-select: none;
+            gap: 16px;
+        }
+        details.acc-item summary::-webkit-details-marker { display: none; }
+
+        .acc-icon {
+            width: 18px; height: 18px;
+            flex-shrink: 0;
+            color: var(--amber);
+            stroke: currentColor; fill: none;
+            stroke-width: 2; stroke-linecap: round;
+            transition: transform 0.3s ease;
+        }
+        details[open] .acc-icon { transform: rotate(45deg); }
+
+        .acc-body {
+            padding: 4px 20px 20px;
+            color: var(--text-muted);
+            font-size: 18px;
+            line-height: 1.78;
+        }
+        .acc-body p + p { margin-top: 10px; }
+        .acc-body ul { padding-left: 20px; margin-top: 10px; }
+        .acc-body li { margin-bottom: 8px; }
+        .acc-body strong { color: var(--text); font-weight: 500; }
+        .acc-body em { color: var(--text); font-style: italic; }
+        .acc-body a { color: var(--amber); text-decoration: none; }
+        .acc-body a:hover { color: var(--amber-light); text-decoration: underline; }
+
+        /* ── Requirements ── */
+        .req-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        .req-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 22px 16px;
+            text-align: center;
+        }
+        .req-label {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            color: var(--amber);
+            margin-bottom: 7px;
+        }
+        .req-value {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1;
+        }
+        .req-note {
+            font-size: 15px;
+            color: var(--text-subtle);
+            margin-top: 5px;
+        }
+
+        /* ── Contact box ── */
+        .contact-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+        }
+        .contact-box h3 {
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+        .contact-desc {
+            color: var(--text-muted);
+            font-size: 18px;
+            margin-bottom: 24px;
+        }
+        .email-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 24px;
+            background: var(--amber);
+            color: #0C0B09;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
             font-weight: 600;
             font-size: 18px;
+            transition: background 0.2s, transform 0.15s;
         }
-        .contact {
-            background: linear-gradient(135deg, #f0fffe 0%, #e0fbf9 100%);
-            padding: 25px;
-            border-radius: 14px;
-            margin-top: 35px;
-            border: 2px solid #d0f5f2;
-        }
-        .contact-method {
-            margin: 18px 0;
-        }
-        .feature-list {
-            background: linear-gradient(135deg, #e8fffe 0%, #d4f9f7 100%);
-            padding: 20px;
-            border-radius: 12px;
-            margin: 18px 0;
-            border: 2px solid #c0f0ed;
-        }
-        ul {
-            padding-left: 25px;
-        }
-        li {
-            margin-bottom: 10px;
-        }
-        a {
-            color: #00D4C4;
+        .email-button:hover {
+            background: var(--amber-light);
+            transform: translateY(-1px);
+            color: #0C0B09;
             text-decoration: none;
+        }
+        .contact-checklist {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+        .contact-checklist .checklist-label {
+            font-size: 14px;
             font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-subtle);
+            margin-bottom: 12px;
         }
-        a:hover {
-            color: #00B8AA;
-            text-decoration: underline;
+        .contact-checklist ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
-        .button {
-            display: inline-block;
-            padding: 14px 28px;
-            background-color: #00D4C4;
-            color: white;
-            border-radius: 10px;
+        .contact-checklist li {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            font-size: 18px;
+            color: var(--text-muted);
+        }
+        .contact-checklist li::before {
+            content: '·';
+            color: var(--amber);
+            font-size: 25px;
+            line-height: 0;
+            flex-shrink: 0;
+        }
+        .response-time {
+            margin-top: 20px;
+            font-size: 16px;
+            color: var(--text-subtle);
+        }
+
+        /* ── Resources ── */
+        .resources-list { display: flex; flex-direction: column; gap: 6px; }
+        .resource-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
             text-decoration: none;
-            margin-top: 12px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 212, 196, 0.3);
+            color: var(--text-muted);
+            font-size: 18px;
+            font-weight: 400;
+            transition: border-color 0.2s, color 0.2s, background 0.2s;
         }
-        .button:hover {
-            background-color: #00B8AA;
+        .resource-link:hover {
+            border-color: var(--border-hover);
+            background: var(--surface-alt);
+            color: var(--amber-light);
             text-decoration: none;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 212, 196, 0.4);
         }
-        @media (max-width: 768px) {
-            .container {
-                padding: 25px;
-            }
-            h1 {
-                font-size: 26px;
-            }
-            h2 {
-                font-size: 20px;
-            }
+        .resource-link svg {
+            width: 14px; height: 14px;
+            stroke: var(--text-subtle); fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+            flex-shrink: 0;
+            transition: stroke 0.2s;
+        }
+        .resource-link:hover svg { stroke: var(--amber); }
+
+        /* ── Footer ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding-top: 32px;
+            text-align: center;
+            color: var(--text-subtle);
+            font-size: 16px;
+            line-height: 1.9;
+        }
+
+        /* ── Animations ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .site-header  { animation: fadeUp 0.45s ease both; animation-delay: 0.0s; }
+        .intro-banner { animation: fadeUp 0.45s ease both; animation-delay: 0.07s; }
+        .section      { animation: fadeUp 0.45s ease both; }
+        .section:nth-of-type(1) { animation-delay: 0.13s; }
+        .section:nth-of-type(2) { animation-delay: 0.18s; }
+        .section:nth-of-type(3) { animation-delay: 0.23s; }
+        .section:nth-of-type(4) { animation-delay: 0.28s; }
+        .section:nth-of-type(5) { animation-delay: 0.33s; }
+        .section:nth-of-type(6) { animation-delay: 0.38s; }
+        footer { animation: fadeUp 0.45s ease both; animation-delay: 0.42s; }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            .page { padding: 0 18px 72px; }
+            .site-header { padding: 28px 0 44px; }
+            .back-link { margin-bottom: 36px; }
+            .header-inner { flex-direction: column; gap: 16px; }
+            .app-icon { width: 60px; height: 60px; border-radius: 15px; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .req-grid { grid-template-columns: 1fr 1fr; }
+            .contact-box { padding: 24px; }
+        }
+        @media (max-width: 380px) {
+            .req-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Millo Support</h1>
+<div class="page">
 
-        <div class="intro">
-            <p><strong>Welcome to Millo Support!</strong></p>
-            <p>Millo is your personal meal planning and grocery shopping assistant for iOS and Apple Watch. We're here to help you get the most out of the app.</p>
-        </div>
-
-        <h2>About Millo</h2>
-        <p>Millo helps you organize your meals and simplify grocery shopping with these features:</p>
-        <div class="feature-list">
-            <ul>
-                <li><strong>AI Recipe Assistant:</strong> Generate custom recipes or convert any recipe text using Apple Intelligence (iOS 26.0+)</li>
-                <li><strong>Recipe Management:</strong> Create, edit, and organize your favorite recipes</li>
-                <li><strong>Meal Planning:</strong> Plan your meals on a visual calendar</li>
-                <li><strong>Smart Shopping Lists:</strong> Auto-generate shopping lists from your meal plans</li>
-                <li><strong>Category Organization:</strong> Organize ingredients by category for efficient shopping</li>
-                <li><strong>Apple Watch App:</strong> Access your shopping list on your wrist</li>
-                <li><strong>iCloud Sync:</strong> Keep your data synchronized across all your devices</li>
-                <li><strong>Recipe Sharing:</strong> Import and export recipes with friends and family</li>
-                <li><strong>Fidelity Cards:</strong> Store all your loyalty cards digitally and scan barcodes with your camera</li>
-                <li><strong>Siri Shortcuts:</strong> Add ingredients to your shopping list or open a loyalty card hands-free with Siri</li>
-            </ul>
-        </div>
-
-        <h2>Frequently Asked Questions</h2>
-
-        <div class="faq-item">
-            <h3>How do I use the AI Recipe Assistant?</h3>
-            <p>The AI Recipe Assistant is available on iOS 26.0+ with Apple Intelligence enabled. In the Recipes tab, tap the floating "+" button to see two options:</p>
-            <ul>
-                <li><strong>Generate Recipe with AI:</strong> Describe what you want to cook (e.g., "a healthy pasta dish with vegetables"), and Apple Intelligence will create a complete recipe with ingredients, quantities adjusted for your measurement system, and step-by-step instructions.</li>
-                <li><strong>Convert Recipe:</strong> Paste any recipe text from a website, cookbook, or message, and Apple Intelligence will automatically structure it with categorized ingredients and organized steps.</li>
-            </ul>
-            <p>Both modes adapt to your language and local measurement system. You can review and edit the generated recipe before saving it.</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>How do I create a recipe manually?</h3>
-            <p>Navigate to the Recipes tab and tap the "+" button (or "Add recipe" if AI is available). Fill in the recipe details including ingredients, preparation steps, cooking time, and servings. You can also add tags to organize your recipes.</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>How do I plan meals?</h3>
-            <p>Go to the Meal Planner tab to see your calendar. Tap on any date to add a meal. You can select one or more recipes, specify the meal type (breakfast, lunch, dinner, or snack), and set the number of people.</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>How does the shopping list work?</h3>
-            <p>The shopping list is automatically generated from your planned meals. All ingredients from your meal plans are combined and organized by category. You can check off items as you shop, and the app remembers what you've bought.</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>Can I use Millo on my Apple Watch?</h3>
-            <p>Yes! Millo includes a companion app for Apple Watch. You can view your shopping list and check off items directly from your wrist while shopping.</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>How do I sync my data across devices?</h3>
-            <p>Millo uses iCloud to automatically sync your recipes, meal plans, and shopping lists across all your iOS devices. Make sure you're signed in to the same iCloud account on all devices and have iCloud enabled for Millo in your device settings.</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>How do I share recipes?</h3>
-            <p>Open any recipe and tap the share button. You can export the recipe as a .millo file and share it via Messages, Mail, AirDrop, or any other sharing method. Recipients can import the recipe directly into their Millo app.</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>What are Pro features?</h3>
-            <p>Millo offers additional Pro features for enhanced meal planning and organization. Check the app for current Pro feature availability and early access opportunities.</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>Is my data private?</h3>
-            <p>Absolutely! All your data is stored locally on your device and in your personal iCloud account. We never collect, access, or share your personal information. Read our <a href="privacy-policy.html">Privacy Policy</a> for more details.</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>How do I delete my data?</h3>
-            <p>You can delete individual recipes, meals, or ingredients within the app at any time. To delete all local data, simply delete the app from your device. To remove iCloud data, go to Settings > [Your Name] > iCloud > Manage Storage > Millo and delete the data.</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>How do I use Fidelity Cards?</h3>
-            <p>Go to the <strong>Cards</strong> tab to manage your loyalty cards. You can add a new card by tapping "+" and either entering the barcode number manually or scanning it directly with your camera. Each card stores the name, card number, barcode, and a custom color for easy identification. To show a card in store, just tap it — the barcode will be displayed at full brightness on screen.</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>How do I use Siri Shortcuts?</h3>
-            <p>Millo supports two Siri Shortcuts you can activate with your voice or from the Shortcuts app:</p>
-            <ul>
-                <li><strong>Add Ingredient to Shopping List:</strong> Say something like <em>"Add milk to Millo"</em> and Siri will ask for the ingredient name, quantity, and unit, then add it to your shopping list automatically.</li>
-                <li><strong>Open Fidelity Card:</strong> Say <em>"Open my Esselunga card on Millo"</em> and Siri will open that specific card directly in the app.</li>
-            </ul>
-            <p>You can also find and customise these shortcuts in the <strong>Shortcuts</strong> app on your iPhone, or access them from <strong>Settings → Siri Shortcuts</strong> inside Millo.</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>Does Millo collect any usage data?</h3>
-            <p>Only if you explicitly choose to share it. When you first launch the app, Millo will ask whether you'd like to enable anonymous analytics and crash reporting (powered by Firebase). This helps us understand how the app is used and fix bugs faster. No personal data, recipe content, or identifiable information is ever collected. You can change your preference at any time in <strong>Settings → Analytics & Crash Reports</strong>.</p>
-        </div>
-
-        <h2>System Requirements</h2>
-        <ul>
-            <li><strong>iOS:</strong> Requires iOS 18.0 or later</li>
-            <li><strong>watchOS:</strong> Requires watchOS 11.0 or later</li>
-            <li><strong>iCloud:</strong> Optional, for sync across devices</li>
-        </ul>
-
-        <h2>Troubleshooting</h2>
-
-        <div class="faq-item">
-            <h3>My data isn't syncing</h3>
-            <p>Check that:</p>
-            <ul>
-                <li>You're signed in to iCloud on all devices</li>
-                <li>iCloud Drive is enabled in Settings > [Your Name] > iCloud</li>
-                <li>Millo has iCloud access enabled in Settings > [Your Name] > iCloud</li>
-                <li>You have sufficient iCloud storage available</li>
-            </ul>
-        </div>
-
-        <div class="faq-item">
-            <h3>The Apple Watch app isn't working</h3>
-            <p>Make sure:</p>
-            <ul>
-                <li>Your Apple Watch is paired with your iPhone</li>
-                <li>Millo is installed on both devices</li>
-                <li>Your devices are within Bluetooth range</li>
-                <li>Try force-quitting both apps and reopening them</li>
-            </ul>
-        </div>
-
-        <h2>Contact Support</h2>
-        <div class="contact">
-            <p>Can't find what you're looking for? We're here to help!</p>
-
-            <div class="contact-method">
-                <strong>Email Support:</strong><br>
-                <a href="mailto:" class="button" data-email></a>
+    <header class="site-header">
+        <a href="index.html" class="back-link">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+            Millo
+        </a>
+        <div class="header-inner">
+            <img src="app-icon.png" class="app-icon" alt="Millo">
+            <div class="header-text">
+                <h1>Support</h1>
+                <p class="subtitle">Meal planning &amp; grocery assistant for iOS &amp; Apple Watch</p>
             </div>
-
-            <p style="margin-top: 20px;">When contacting support, please include:</p>
-            <ul>
-                <li>Your device model and iOS version</li>
-                <li>Millo version (found in Settings)</li>
-                <li>A detailed description of the issue</li>
-                <li>Steps to reproduce the problem (if applicable)</li>
-            </ul>
-
-            <p style="margin-top: 20px;">We typically respond within 24-48 hours.</p>
         </div>
+    </header>
 
-        <h2>Additional Resources</h2>
-        <ul>
-            <li><a href="privacy-policy.html">Privacy Policy</a></li>
-            <li><a href="support-it.html">Supporto in Italiano</a></li>
-        </ul>
-
-        <hr style="margin-top: 40px; border: none; border-top: 1px solid #ddd;">
-        <p style="text-align: center; color: #7f8c8d; font-size: 14px;">
-            &copy; 2025 Berardino Chiarello. All rights reserved.<br>
-            Millo - Your Personal Meal Planning Assistant
-        </p>
+    <div class="intro-banner">
+        <p class="intro-title">Welcome to Millo Support</p>
+        <p>We're here to help you get the most out of the app. Browse the FAQ below or reach out directly.</p>
     </div>
+
+    <!-- About -->
+    <section class="section">
+        <div class="section-header">
+            <h2>About Millo</h2>
+            <p class="section-desc">Everything Millo can do for you</p>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-chip">
+                <strong>AI Recipe Assistant</strong>
+                Generate &amp; convert recipes with Apple Intelligence (iOS 26+)
+            </div>
+            <div class="feature-chip">
+                <strong>Recipe Management</strong>
+                Create, edit, and organise your favourite recipes
+            </div>
+            <div class="feature-chip">
+                <strong>Meal Planning</strong>
+                Plan meals on a visual calendar
+            </div>
+            <div class="feature-chip">
+                <strong>Smart Shopping Lists</strong>
+                Auto-generated from your meal plans
+            </div>
+            <div class="feature-chip">
+                <strong>Category Organisation</strong>
+                Ingredients grouped for efficient shopping
+            </div>
+            <div class="feature-chip">
+                <strong>Apple Watch</strong>
+                Your shopping list on your wrist
+            </div>
+            <div class="feature-chip">
+                <strong>iCloud Sync</strong>
+                Seamless across all your devices
+            </div>
+            <div class="feature-chip">
+                <strong>Recipe Sharing</strong>
+                Import &amp; export with friends and family
+            </div>
+            <div class="feature-chip">
+                <strong>Fidelity Cards</strong>
+                Store loyalty cards &amp; scan barcodes
+            </div>
+            <div class="feature-chip">
+                <strong>Siri Shortcuts</strong>
+                Hands-free ingredient &amp; card access
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+        <div class="section-header">
+            <h2>Frequently Asked Questions</h2>
+        </div>
+        <div class="accordion">
+
+            <details class="acc-item">
+                <summary>
+                    How do I use the AI Recipe Assistant?
+                    <svg class="acc-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </summary>
+                <div class="acc-body">
+                    <p>The AI Recipe Assistant is available on iOS 26.0+ with Apple Intelligence enabled. In the Recipes tab, tap the floating "+" button to see two options:</p>
+                    <ul>
+                        <li><strong>Generate Recipe with AI:</strong> Describe what you want to cook (e.g. "a healthy pasta dish with vegetables"), and Apple Intelligence will create a complete recipe with ingredients, quantities adjusted for your measurement system, and step-by-step instructions.</li>
+                        <li><strong>Convert Recipe:</strong> Paste any recipe text from a website, cookbook, or message, and Apple Intelligence will automatically structure it with categorised ingredients and organised steps.</li>
+                    </ul>
+                    <p>Both modes adapt to your language and local measurement system. You can review and edit the generated recipe before saving it.</p>
+                </div>
+            </details>
+
+            <details class="acc-item">
+                <summary>
+                    How do I create a recipe manually?
+                    <svg class="acc-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </summary>
+                <div class="acc-body">
+                    <p>Navigate to the Recipes tab and tap the "+" button (or "Add recipe" if AI is available). Fill in the recipe details including ingredients, preparation steps, cooking time, and servings. You can also add tags to organise your recipes.</p>
+                </div>
+            </details>
+
+            <details class="acc-item">
+                <summary>
+                    How do I plan meals?
+                    <svg class="acc-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </summary>
+                <div class="acc-body">
+                    <p>Go to the Meal Planner tab to see your calendar. Tap on any date to add a meal. You can select one or more recipes, specify the meal type (breakfast, lunch, dinner, or snack), and set the number of people.</p>
+                </div>
+            </details>
+
+            <details class="acc-item">
+                <summary>
+                    How does the shopping list work?
+                    <svg class="acc-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </summary>
+                <div class="acc-body">
+                    <p>The shopping list is automatically generated from your planned meals. All ingredients from your meal plans are combined and organised by category. You can check off items as you shop, and the app remembers what you've bought.</p>
+                </div>
+            </details>
+
+            <details class="acc-item">
+                <summary>
+                    Can I use Millo on my Apple Watch?
+                    <svg class="acc-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </summary>
+                <div class="acc-body">
+                    <p>Yes! Millo includes a companion app for Apple Watch. You can view your shopping list and check off items directly from your wrist while shopping.</p>
+                </div>
+            </details>
+
+            <details class="acc-item">
+                <summary>
+                    How do I sync my data across devices?
+                    <svg class="acc-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </summary>
+                <div class="acc-body">
+                    <p>Millo uses iCloud to automatically sync your recipes, meal plans, and shopping lists across all your iOS devices. Make sure you're signed in to the same iCloud account on all devices and have iCloud enabled for Millo in your device settings.</p>
+                </div>
+            </details>
+
+            <details class="acc-item">
+                <summary>
+                    How do I share recipes?
+                    <svg class="acc-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </summary>
+                <div class="acc-body">
+                    <p>Open any recipe and tap the share button. You can export the recipe as a .millo file and share it via Messages, Mail, AirDrop, or any other sharing method. Recipients can import the recipe directly into their Millo app.</p>
+                </div>
+            </details>
+
+            <details class="acc-item">
+                <summary>
+                    What are Pro features?
+                    <svg class="acc-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </summary>
+                <div class="acc-body">
+                    <p>Millo offers additional Pro features for enhanced meal planning and organisation. Check the app for current Pro feature availability and early access opportunities.</p>
+                </div>
+            </details>
+
+            <details class="acc-item">
+                <summary>
+                    Is my data private?
+                    <svg class="acc-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </summary>
+                <div class="acc-body">
+                    <p>Absolutely. All your data is stored locally on your device and in your personal iCloud account. We never collect, access, or share your personal information. Read our <a href="privacy-policy.html">Privacy Policy</a> for more details.</p>
+                </div>
+            </details>
+
+            <details class="acc-item">
+                <summary>
+                    How do I delete my data?
+                    <svg class="acc-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </summary>
+                <div class="acc-body">
+                    <p>You can delete individual recipes, meals, or ingredients within the app at any time. To delete all local data, simply delete the app from your device. To remove iCloud data, go to <strong>Settings → [Your Name] → iCloud → Manage Storage → Millo</strong> and delete the data.</p>
+                </div>
+            </details>
+
+            <details class="acc-item">
+                <summary>
+                    How do I use Fidelity Cards?
+                    <svg class="acc-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </summary>
+                <div class="acc-body">
+                    <p>Go to the <strong>Cards</strong> tab to manage your loyalty cards. Tap "+" to add a new card — enter the barcode number manually or scan it directly with your camera. Each card stores the name, card number, barcode, and a custom colour for easy identification. To show a card in store, tap it — the barcode will be displayed at full brightness on screen.</p>
+                </div>
+            </details>
+
+            <details class="acc-item">
+                <summary>
+                    How do I use Siri Shortcuts?
+                    <svg class="acc-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </summary>
+                <div class="acc-body">
+                    <p>Millo supports two Siri Shortcuts you can activate with your voice or from the Shortcuts app:</p>
+                    <ul>
+                        <li><strong>Add Ingredient to Shopping List:</strong> Say something like <em>"Add milk to Millo"</em> and Siri will ask for the ingredient name, quantity, and unit, then add it to your shopping list automatically.</li>
+                        <li><strong>Open Fidelity Card:</strong> Say <em>"Open my Esselunga card on Millo"</em> and Siri will open that specific card directly in the app.</li>
+                    </ul>
+                    <p>You can also find and customise these shortcuts in the <strong>Shortcuts</strong> app on your iPhone, or from <strong>Settings → Siri Shortcuts</strong> inside Millo.</p>
+                </div>
+            </details>
+
+            <details class="acc-item">
+                <summary>
+                    Does Millo collect any usage data?
+                    <svg class="acc-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </summary>
+                <div class="acc-body">
+                    <p>Only if you explicitly choose to share it. When you first launch the app, Millo will ask whether you'd like to enable anonymous analytics and crash reporting (powered by Firebase). This helps us understand how the app is used and fix bugs faster. No personal data, recipe content, or identifiable information is ever collected. You can change your preference at any time in <strong>Settings → Analytics &amp; Crash Reports</strong>.</p>
+                </div>
+            </details>
+
+        </div>
+    </section>
+
+    <!-- Troubleshooting -->
+    <section class="section">
+        <div class="section-header">
+            <h2>Troubleshooting</h2>
+        </div>
+        <div class="accordion">
+
+            <details class="acc-item">
+                <summary>
+                    My data isn't syncing
+                    <svg class="acc-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </summary>
+                <div class="acc-body">
+                    <p>Check that:</p>
+                    <ul>
+                        <li>You're signed in to iCloud on all devices</li>
+                        <li>iCloud Drive is enabled in <strong>Settings → [Your Name] → iCloud</strong></li>
+                        <li>Millo has iCloud access enabled in <strong>Settings → [Your Name] → iCloud</strong></li>
+                        <li>You have sufficient iCloud storage available</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="acc-item">
+                <summary>
+                    The Apple Watch app isn't working
+                    <svg class="acc-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </summary>
+                <div class="acc-body">
+                    <p>Make sure:</p>
+                    <ul>
+                        <li>Your Apple Watch is paired with your iPhone</li>
+                        <li>Millo is installed on both devices</li>
+                        <li>Your devices are within Bluetooth range</li>
+                        <li>Try force-quitting both apps and reopening them</li>
+                    </ul>
+                </div>
+            </details>
+
+        </div>
+    </section>
+
+    <!-- System requirements -->
+    <section class="section">
+        <div class="section-header">
+            <h2>System Requirements</h2>
+        </div>
+        <div class="req-grid">
+            <div class="req-card">
+                <div class="req-label">iOS</div>
+                <div class="req-value">18.0+</div>
+                <div class="req-note">Required</div>
+            </div>
+            <div class="req-card">
+                <div class="req-label">watchOS</div>
+                <div class="req-value">11.0+</div>
+                <div class="req-note">Required</div>
+            </div>
+            <div class="req-card">
+                <div class="req-label">iCloud</div>
+                <div class="req-value">Optional</div>
+                <div class="req-note">For sync</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section">
+        <div class="contact-box">
+            <h3>Contact Support</h3>
+            <p class="contact-desc">Can't find what you're looking for? We're here to help.</p>
+            <a href="mailto:" class="email-button" data-email>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+                Send Email
+            </a>
+            <div class="contact-checklist">
+                <p class="checklist-label">Please include in your message</p>
+                <ul>
+                    <li>Your device model and iOS version</li>
+                    <li>Millo version (found in Settings)</li>
+                    <li>A detailed description of the issue</li>
+                    <li>Steps to reproduce the problem (if applicable)</li>
+                </ul>
+            </div>
+            <p class="response-time">We typically respond within 24–48 hours.</p>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section class="section">
+        <div class="section-header">
+            <h2>Additional Resources</h2>
+        </div>
+        <div class="resources-list">
+            <a href="privacy-policy.html" class="resource-link">
+                Privacy Policy
+                <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a href="support-it.html" class="resource-link">
+                Supporto in Italiano
+                <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Berardino Chiarello. All rights reserved.</p>
+        <p>Millo — Your Personal Meal Planning Assistant</p>
+    </footer>
+
+</div>
 </body>
 </html>

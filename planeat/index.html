@@ -3,532 +3,578 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Millo - Your Personal Meal Planning Assistant</title>
+    <title>Millo — Your Personal Meal Planning Assistant</title>
     <link rel="icon" type="image/png" href="app-icon.png">
     <link rel="apple-touch-icon" href="app-icon.png">
     <script src="config.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:           #0A0A0A;
+            --surface:      #141414;
+            --surface-alt:  #1C1C1C;
+            --border:       rgba(21, 175, 170, 0.14);
+            --border-hover: rgba(21, 175, 170, 0.32);
+            --text:         #EDE5D0;
+            --text-muted:   #9A8B74;
+            --text-subtle:  #5A5044;
+            --teal:         #15AFAA;
+            --teal-light:   #1EC9C3;
+            --teal-dim:     rgba(21, 175, 170, 0.10);
+            --radius:       14px;
+            --radius-sm:    9px;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body:    'DM Sans', -apple-system, sans-serif;
         }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg:           #F8F7F5;
+                --surface:      #FFFFFF;
+                --surface-alt:  #F0EFEC;
+                --border:       rgba(21, 175, 170, 0.18);
+                --border-hover: rgba(21, 175, 170, 0.40);
+                --text:         #1A1A18;
+                --text-muted:   #6B6055;
+                --text-subtle:  #A09080;
+                --teal-dim:     rgba(21, 175, 170, 0.07);
+            }
+            .cta-button { color: #FFFFFF; }
+            .cta-button:hover { color: #FFFFFF; }
+        }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            background: linear-gradient(135deg, #00D4C4 0%, #00B8AA 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-        }
-
-        .header {
-            text-align: center;
-            padding: 60px 40px 40px;
-            background: linear-gradient(180deg, #ffffff 0%, #f8fffe 100%);
-        }
-
-        .app-icon {
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 25px;
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 212, 196, 0.3);
-        }
-
-        .app-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        h1 {
-            color: #1a1a1a;
-            margin: 0 0 10px 0;
-            font-size: 42px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .tagline {
-            color: #666;
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
             font-size: 20px;
-            margin-top: 10px;
-            font-weight: 400;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
         }
 
-        .badge {
-            display: inline-block;
-            padding: 8px 16px;
-            background-color: #00D4C4;
-            color: white;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            margin-top: 15px;
-        }
-
-        .app-store-button {
-            display: inline-block;
-            margin: 25px 0 0 0;
-            padding: 16px 40px;
-            background-color: #00D4C4;
-            color: white;
-            text-decoration: none;
-            border-radius: 14px;
-            font-size: 18px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 212, 196, 0.3);
-        }
-
-        .app-store-button:hover {
-            background-color: #00B8AA;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 212, 196, 0.4);
-        }
-
-        .description {
+        /* ── Hero ── */
+        .hero {
+            max-width: 680px;
+            margin: 0 auto;
             text-align: center;
-            font-size: 17px;
-            color: #444;
-            margin: 0;
-            padding: 40px 50px;
-            background-color: #fafafa;
-            line-height: 1.8;
+            padding: 80px 28px 88px;
         }
 
-        .ai-spotlight {
-            padding: 50px 40px;
-            background: linear-gradient(135deg, #f8f9ff 0%, #f0fffe 100%);
-            border-top: 3px solid #00D4C4;
-            border-bottom: 3px solid #00D4C4;
+        .hero-icon {
+            width: 112px; height: 112px;
+            border-radius: 26px;
+            margin-bottom: 32px;
+            box-shadow:
+                0 0 0 1px rgba(21, 175, 170, 0.2),
+                0 16px 56px rgba(21, 175, 170, 0.18),
+                0 8px 24px rgba(0,0,0,0.55);
         }
 
-        .ai-spotlight-header {
-            text-align: center;
-            margin-bottom: 25px;
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(80px, 13vw, 120px);
+            font-weight: 600;
+            line-height: 0.95;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            margin-bottom: 18px;
+        }
+
+        .hero .tagline {
+            font-size: clamp(19px, 2.5vw, 22px);
+            font-weight: 300;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 28px;
+        }
+
+        .hero-badges {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 36px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 14px;
+            border: 1px solid var(--border-hover);
+            border-radius: 20px;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--teal);
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 15px 36px;
+            background: var(--teal);
+            color: #0C0B09;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 19px;
+            letter-spacing: 0.01em;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            box-shadow: 0 4px 28px rgba(21, 175, 170, 0.32);
+        }
+
+        .cta-button:hover {
+            background: var(--teal-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 36px rgba(21, 175, 170, 0.42);
+            color: #0C0B09;
+            text-decoration: none;
+        }
+
+        /* ── Content ── */
+        .content {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 28px 96px;
+        }
+
+        /* ── Intro ── */
+        .intro {
+            text-align: center;
+            border-top: 1px solid var(--border);
+            padding-top: 64px;
+            margin-bottom: 72px;
+        }
+
+        .intro p {
+            font-size: 21px;
+            font-weight: 300;
+            color: var(--text-muted);
+            line-height: 1.85;
+            max-width: 580px;
+            margin: 0 auto;
+        }
+
+        /* ── Section ── */
+        .section { margin-bottom: 72px; }
+        .section-header { margin-bottom: 28px; }
+
+        h2 {
+            font-family: var(--font-display);
+            font-size: clamp(32px, 4.5vw, 42px);
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: -0.01em;
+            display: flex;
             align-items: center;
             gap: 12px;
         }
-
-        .ai-icon {
-            font-size: 48px;
+        h2::before {
+            content: '';
+            display: block;
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--teal);
+            flex-shrink: 0;
+        }
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 19px;
+            margin-top: 8px;
+            padding-left: 18px;
         }
 
-        .ai-spotlight h2 {
-            margin: 0;
-            font-size: 32px;
-            color: #1a1a1a;
+        /* ── AI Spotlight ── */
+        .ai-spotlight {
+            background: var(--teal-dim);
+            border: 1px solid var(--border-hover);
+            border-radius: var(--radius);
+            padding: 40px;
+            margin-bottom: 72px;
         }
 
-        .ai-label {
-            display: inline-block;
-            padding: 6px 16px;
-            background: linear-gradient(135deg, #00D4C4 0%, #00B8AA 100%);
-            color: white;
+        .ai-spotlight-top {
+            margin-bottom: 28px;
+        }
+
+        .ai-spotlight-top h2 {
+            font-size: clamp(32px, 5vw, 45px);
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .ai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border: 1px solid rgba(21, 175, 170, 0.35);
             border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            color: var(--teal-light);
         }
 
-        .ai-spotlight-intro {
-            text-align: center;
-            font-size: 17px;
-            color: #444;
-            line-height: 1.7;
-            margin-bottom: 35px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+        .ai-intro {
+            color: var(--text-muted);
+            font-size: 19px;
+            line-height: 1.75;
+            margin-top: 14px;
+            max-width: 560px;
         }
 
         .ai-modes {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 28px;
         }
 
-        .ai-mode {
-            padding: 30px;
-            background: white;
-            border-radius: 16px;
-            border: 2px solid #e0f5f3;
-            transition: all 0.3s ease;
+        .ai-mode-card {
+            background: var(--surface-alt);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 24px;
+            transition: border-color 0.2s;
         }
 
-        .ai-mode:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 212, 196, 0.15);
-            border-color: #00D4C4;
+        .ai-mode-card:hover { border-color: var(--border-hover); }
+
+        .ai-mode-icon { font-size: 32px; margin-bottom: 14px; }
+
+        .ai-mode-card h3 {
+            font-family: var(--font-display);
+            font-size: 25px;
+            font-weight: 600;
+            color: var(--teal-light);
+            margin-bottom: 10px;
         }
 
-        .ai-mode-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
+        .ai-mode-card p {
+            color: var(--text-muted);
+            font-size: 18px;
+            line-height: 1.65;
         }
 
-        .ai-mode h3 {
-            color: #00B8AA;
-            margin: 0 0 12px 0;
-            font-size: 20px;
-            font-weight: 700;
-        }
-
-        .ai-mode p {
-            color: #666;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        .ai-spotlight-note {
-            text-align: center;
-            font-size: 14px;
-            color: #888;
+        .ai-note {
+            margin-top: 20px;
+            font-size: 16px;
+            color: var(--text-subtle);
             font-style: italic;
         }
 
-        .features {
+        /* ── Feature grid ── */
+        .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            padding: 50px 40px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
         }
 
-        .feature {
-            padding: 30px 25px;
-            background: linear-gradient(135deg, #f8fffe 0%, #ffffff 100%);
-            border-radius: 16px;
-            text-align: center;
-            border: 2px solid #e8f9f7;
-            transition: all 0.3s ease;
+        .feature-chip {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 18px 16px;
+            line-height: 1.45;
+            transition: border-color 0.2s, background 0.2s;
         }
 
-        .feature:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 212, 196, 0.15);
-            border-color: #00D4C4;
+        .feature-chip:hover {
+            border-color: var(--border-hover);
+            background: var(--surface-alt);
         }
 
-        .feature-icon {
-            font-size: 48px;
-            margin-bottom: 15px;
+        .chip-icon { font-size: 28px; margin-bottom: 10px; }
+
+        .feature-chip strong {
+            display: block;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 4px;
         }
 
-        .feature h3 {
-            color: #1a1a1a;
-            margin: 15px 0 10px 0;
-            font-size: 20px;
-            font-weight: 700;
+        .feature-chip span {
+            font-size: 16px;
+            color: var(--text-muted);
         }
 
-        .feature p {
-            color: #666;
-            font-size: 15px;
-            margin: 0;
-            line-height: 1.6;
-        }
+        /* ── Resources ── */
+        .resources-list { display: flex; flex-direction: column; gap: 6px; }
 
-        .ai-feature {
-            background: linear-gradient(135deg, #f0f0ff 0%, #e8f9f7 100%);
-            border-color: #00D4C4;
-            border-width: 2px;
-            grid-column: span 2;
-        }
-
-        .ai-badge {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 6px 12px;
-            background: linear-gradient(135deg, #00D4C4 0%, #00B8AA 100%);
-            color: white;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        @media (max-width: 768px) {
-            .ai-feature {
-                grid-column: span 1;
-            }
-        }
-
-        .links-section {
-            margin: 0;
-            padding: 50px 40px;
-            background: linear-gradient(180deg, #fafafa 0%, #f5f5f5 100%);
-        }
-
-        .links-section h2 {
-            color: #1a1a1a;
-            margin: 0 0 30px 0;
-            text-align: center;
-            font-size: 28px;
-            font-weight: 700;
-        }
-
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .link-card {
-            background-color: white;
-            padding: 25px 20px;
-            border-radius: 14px;
-            text-align: center;
+        .resource-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 22px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
             text-decoration: none;
-            color: #1a1a1a;
-            transition: all 0.3s ease;
-            border: 2px solid #e8e8e8;
+            transition: border-color 0.2s, background 0.2s;
         }
 
-        .link-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 212, 196, 0.15);
-            border-color: #00D4C4;
-        }
-
-        .link-icon {
-            font-size: 36px;
-            margin-bottom: 12px;
-        }
-
-        .link-card h3 {
-            margin: 12px 0 8px 0;
-            font-size: 17px;
-            color: #00D4C4;
-            font-weight: 600;
-        }
-
-        .link-card p {
-            margin: 0;
-            font-size: 13px;
-            color: #888;
-        }
-
-        .copyright {
-            text-align: center;
-            padding: 50px 40px;
-            background-color: white;
-            color: #888;
-        }
-
-        .copyright h2 {
-            color: #1a1a1a;
-            margin-bottom: 20px;
-            font-size: 24px;
-            font-weight: 700;
-        }
-
-        .copyright p {
-            margin: 8px 0;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .copyright a {
-            color: #00D4C4;
+        .resource-link:hover {
+            border-color: var(--border-hover);
+            background: var(--surface-alt);
             text-decoration: none;
-            font-weight: 600;
         }
 
-        .copyright a:hover {
-            text-decoration: underline;
+        .resource-link .link-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
         }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 32px;
-            }
+        .link-emoji { font-size: 22px; }
 
-            .description {
-                padding: 30px 25px;
-                font-size: 16px;
-            }
+        .link-title {
+            display: block;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--text);
+            transition: color 0.2s;
+        }
+        .resource-link:hover .link-title { color: var(--teal-light); }
 
-            .ai-spotlight {
-                padding: 30px 20px;
-            }
+        .link-desc {
+            display: block;
+            font-size: 16px;
+            color: var(--text-subtle);
+            margin-top: 1px;
+        }
 
-            .ai-spotlight h2 {
-                font-size: 26px;
-            }
+        .resource-link svg {
+            width: 14px; height: 14px;
+            stroke: var(--text-subtle); fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+            flex-shrink: 0;
+            transition: stroke 0.2s;
+        }
 
-            .ai-spotlight-intro {
-                font-size: 16px;
-                padding: 0 10px;
-            }
+        .resource-link:hover svg { stroke: var(--teal); }
 
-            .ai-modes {
-                grid-template-columns: 1fr;
-            }
+        /* ── Footer ── */
+        footer {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 32px 28px 64px;
+            border-top: 1px solid var(--border);
+        }
 
-            .features {
-                padding: 30px 20px;
-                gap: 20px;
-            }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+        }
 
-            .links-section {
-                padding: 30px 20px;
-            }
+        .footer-legal {
+            color: var(--text-subtle);
+            font-size: 16px;
+            line-height: 1.85;
+        }
 
-            .copyright {
-                padding: 30px 20px;
-            }
+        .footer-legal strong { color: var(--text-muted); font-weight: 500; }
+
+        .footer-contact {
+            text-align: right;
+            color: var(--text-subtle);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .footer-contact a { color: var(--teal); text-decoration: none; }
+        .footer-contact a:hover { color: var(--teal-light); }
+
+        /* ── Animations ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .hero         { animation: fadeUp 0.5s ease both; animation-delay: 0.00s; }
+        .intro        { animation: fadeUp 0.5s ease both; animation-delay: 0.08s; }
+        .ai-spotlight { animation: fadeUp 0.5s ease both; animation-delay: 0.14s; }
+        .section:nth-of-type(1) { animation: fadeUp 0.5s ease both; animation-delay: 0.19s; }
+        .section:nth-of-type(2) { animation: fadeUp 0.5s ease both; animation-delay: 0.24s; }
+        footer        { animation: fadeUp 0.5s ease both; animation-delay: 0.28s; }
+
+        /* ── Responsive ── */
+        @media (max-width: 700px) {
+            .hero    { padding: 56px 20px 64px; }
+            .content { padding: 0 18px 72px; }
+            .ai-spotlight { padding: 24px; }
+            .ai-modes { grid-template-columns: 1fr; }
+            .feature-grid { grid-template-columns: 1fr 1fr; }
+            .footer-inner { flex-direction: column; gap: 14px; }
+            .footer-contact { text-align: left; }
+        }
+        @media (max-width: 440px) {
+            .feature-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="app-icon">
-                <img src="app-icon.png" alt="Millo App Icon">
-            </div>
-            <h1>Millo</h1>
-            <p class="tagline">Your Personal Meal Planning Assistant</p>
-            <span class="badge">iOS & watchOS</span>
-            <br>
-            <a href="https://apps.apple.com/it/app/millo-il-tuo-meal-planner/id6741439240" class="app-store-button" target="_blank" rel="noopener noreferrer">
-                Download on the App Store
-            </a>
+
+    <div class="hero">
+        <img src="app-icon.png" class="hero-icon" alt="Millo">
+        <h1>Millo</h1>
+        <p class="tagline">Your Personal Meal Planning Assistant</p>
+        <div class="hero-badges">
+            <span class="hero-badge">iOS</span>
+            <span class="hero-badge">watchOS</span>
+        </div>
+        <a href="https://apps.apple.com/it/app/millo-il-tuo-meal-planner/id6741439240" class="cta-button" target="_blank" rel="noopener noreferrer">
+            Download on the App Store
+        </a>
+    </div>
+
+    <div class="content">
+
+        <div class="intro">
+            <p>Millo is a native iOS and watchOS application designed to simplify meal planning and grocery shopping. Organise your recipes, plan your meals on a visual calendar, and generate smart shopping lists automatically.</p>
         </div>
 
-        <div class="description">
-            <p>Millo is a native iOS and watchOS application designed to simplify meal planning and grocery shopping. Organize your recipes, plan your meals on a visual calendar, and generate smart shopping lists automatically. Available for iPhone and Apple Watch.</p>
-        </div>
-
+        <!-- AI Spotlight -->
         <div class="ai-spotlight">
-            <div class="ai-spotlight-header">
-                <span class="ai-icon">✨</span>
+            <div class="ai-spotlight-top">
                 <h2>AI Recipe Assistant</h2>
-                <span class="ai-label">Powered by Apple Intelligence</span>
+                <span class="ai-badge">✦ Powered by Apple Intelligence</span>
+                <p class="ai-intro">Millo harnesses Apple Intelligence to revolutionise how you manage recipes. Two intelligent modes make recipe creation effortless.</p>
             </div>
-            <p class="ai-spotlight-intro">Millo harnesses the power of Apple Intelligence to revolutionize how you manage recipes. Two intelligent modes make recipe creation effortless:</p>
-
             <div class="ai-modes">
-                <div class="ai-mode">
+                <div class="ai-mode-card">
                     <div class="ai-mode-icon">🪄</div>
                     <h3>Generate Mode</h3>
-                    <p>Describe what you want to cook, and Apple Intelligence creates a complete, personalized recipe with ingredients, quantities, and step-by-step instructions tailored to your preferences and local measurement system.</p>
+                    <p>Describe what you want to cook and Apple Intelligence creates a complete recipe — ingredients, quantities, and step-by-step instructions tailored to your language and measurement system.</p>
                 </div>
-                <div class="ai-mode">
+                <div class="ai-mode-card">
                     <div class="ai-mode-icon">📄</div>
                     <h3>Convert Mode</h3>
-                    <p>Paste any recipe from a website, cookbook, or message, and Apple Intelligence automatically converts it into a structured format with categorized ingredients, proper quantities, and organized cooking steps.</p>
+                    <p>Paste any recipe from a website, cookbook, or message and Apple Intelligence automatically converts it into a structured format with categorised ingredients and organised steps.</p>
                 </div>
             </div>
-
-            <p class="ai-spotlight-note">Available on iOS 26.0+ with Apple Intelligence enabled</p>
+            <p class="ai-note">Requires iOS 26.0+ with Apple Intelligence enabled</p>
         </div>
 
-        <div class="features">
-            <div class="feature ai-feature">
-                <div class="feature-icon">✨</div>
-                <h3>AI Recipe Assistant</h3>
-                <p>Generate custom recipes or convert any recipe text to structured format using Apple Intelligence</p>
-                <span class="ai-badge">Powered by Apple Intelligence</span>
+        <!-- Features -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Features</h2>
+                <p class="section-desc">Everything you need for effortless meal management</p>
             </div>
-            <div class="feature">
-                <div class="feature-icon">📖</div>
-                <h3>Recipe Management</h3>
-                <p>Create and organize your favorite recipes with ingredients, steps, and cooking times</p>
+            <div class="feature-grid">
+                <div class="feature-chip">
+                    <div class="chip-icon">📖</div>
+                    <strong>Recipe Management</strong>
+                    <span>Create and organise your favourite recipes with ingredients, steps, and cooking times</span>
+                </div>
+                <div class="feature-chip">
+                    <div class="chip-icon">📅</div>
+                    <strong>Meal Planning</strong>
+                    <span>Plan your meals on a visual calendar</span>
+                </div>
+                <div class="feature-chip">
+                    <div class="chip-icon">🛒</div>
+                    <strong>Smart Shopping Lists</strong>
+                    <span>Auto-generated and organised by category from your meal plans</span>
+                </div>
+                <div class="feature-chip">
+                    <div class="chip-icon">⌚</div>
+                    <strong>Apple Watch</strong>
+                    <span>Access your shopping list directly from your wrist</span>
+                </div>
+                <div class="feature-chip">
+                    <div class="chip-icon">☁️</div>
+                    <strong>iCloud Sync</strong>
+                    <span>Sync seamlessly across all your Apple devices</span>
+                </div>
+                <div class="feature-chip">
+                    <div class="chip-icon">💳</div>
+                    <strong>Fidelity Cards</strong>
+                    <span>Store all your loyalty cards and scan barcodes with your camera</span>
+                </div>
+                <div class="feature-chip">
+                    <div class="chip-icon">🎙️</div>
+                    <strong>Siri Shortcuts</strong>
+                    <span>Add ingredients or open a card hands-free with your voice</span>
+                </div>
+                <div class="feature-chip">
+                    <div class="chip-icon">📤</div>
+                    <strong>Recipe Sharing</strong>
+                    <span>Import and export recipes with friends and family</span>
+                </div>
+                <div class="feature-chip">
+                    <div class="chip-icon">🔒</div>
+                    <strong>Privacy First</strong>
+                    <span>All data stays on your device and in your iCloud account</span>
+                </div>
             </div>
-            <div class="feature">
-                <div class="feature-icon">📅</div>
-                <h3>Meal Planning</h3>
-                <p>Plan your meals on a visual calendar with drag-and-drop simplicity</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🛒</div>
-                <h3>Smart Shopping Lists</h3>
-                <p>Auto-generate organized shopping lists from your meal plans</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">⌚</div>
-                <h3>Apple Watch</h3>
-                <p>Access your shopping list directly from your wrist while shopping</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">☁️</div>
-                <h3>iCloud Sync</h3>
-                <p>Sync your data seamlessly across all your Apple devices</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">💳</div>
-                <h3>Fidelity Cards</h3>
-                <p>Store and manage all your loyalty cards in one place — scan barcodes with your camera and access cards instantly</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🎙️</div>
-                <h3>Siri Shortcuts</h3>
-                <p>Use your voice to open a loyalty card or add an ingredient to your shopping list — hands-free and lightning fast</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🔒</div>
-                <h3>Privacy First</h3>
-                <p>All your data stays on your device and in your iCloud account</p>
-            </div>
-        </div>
+        </section>
 
-        <div class="links-section">
-            <h2>Resources & Information</h2>
-            <div class="links-grid">
-                <a href="index-it.html" class="link-card">
-                    <div class="link-icon">🌍</div>
-                    <h3>Italiano</h3>
-                    <p>Visualizza in italiano</p>
+        <!-- Information & Navigation -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Information</h2>
+                <p class="section-desc">Support, legal information, and more</p>
+            </div>
+            <div class="resources-list">
+                <a href="support.html" class="resource-link">
+                    <div class="link-left">
+                        <span class="link-emoji">🆘</span>
+                        <div>
+                            <span class="link-title">Support</span>
+                            <span class="link-desc">FAQs, troubleshooting, and contact</span>
+                        </div>
+                    </div>
+                    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                 </a>
-                <a href="support.html" class="link-card">
-                    <div class="link-icon">🆘</div>
-                    <h3>Support (English)</h3>
-                    <p>Get help and FAQs</p>
+                <a href="privacy-policy.html" class="resource-link">
+                    <div class="link-left">
+                        <span class="link-emoji">🔐</span>
+                        <div>
+                            <span class="link-title">Privacy Policy</span>
+                            <span class="link-desc">How we handle your data</span>
+                        </div>
+                    </div>
+                    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                 </a>
-                <a href="support-it.html" class="link-card">
-                    <div class="link-icon">🆘</div>
-                    <h3>Supporto (Italiano)</h3>
-                    <p>Aiuto e domande frequenti</p>
-                </a>
-                <a href="privacy-policy.html" class="link-card">
-                    <div class="link-icon">🔐</div>
-                    <h3>Privacy Policy (English)</h3>
-                    <p>How we handle your data</p>
-                </a>
-                <a href="privacy-policy-it.html" class="link-card">
-                    <div class="link-icon">🔐</div>
-                    <h3>Privacy (Italiano)</h3>
-                    <p>Come gestiamo i tuoi dati</p>
+                <a href="index-it.html" class="resource-link">
+                    <div class="link-left">
+                        <span class="link-emoji">🌍</span>
+                        <div>
+                            <span class="link-title">Italiano</span>
+                            <span class="link-desc">Visualizza in italiano</span>
+                        </div>
+                    </div>
+                    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                 </a>
             </div>
-        </div>
+        </section>
 
-        <div class="copyright">
-            <h2>Copyright & Legal</h2>
-            <p><strong>&copy; 2025 Berardino Chiarello. All rights reserved.</strong></p>
-            <p>Millo is a trademark of Berardino Chiarello.</p>
-            <p style="margin-top: 15px; font-size: 14px;">
-                All product names, logos, and brands are property of their respective owners.<br>
-                Apple, iPhone, Apple Watch, iOS, watchOS, and iCloud are trademarks of Apple Inc.
-            </p>
-            <p style="margin-top: 20px;">
-                <strong>Contact:</strong> <a href="mailto:" style="color: #3498db;" data-email></a>
-            </p>
-        </div>
     </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-legal">
+                <p><strong>&copy; 2025 Berardino Chiarello. All rights reserved.</strong></p>
+                <p>Millo is a trademark of Berardino Chiarello.</p>
+                <p>Apple, iPhone, Apple Watch, iOS, watchOS, and iCloud are trademarks of Apple Inc.</p>
+            </div>
+            <div class="footer-contact">
+                <p>Contact</p>
+                <a href="mailto:" data-email></a>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
